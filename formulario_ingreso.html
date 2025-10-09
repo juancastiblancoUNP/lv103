@@ -289,8 +289,8 @@ $(document).ready(function(){
         data: $('form#formsubida').serialize(),
         success: function(data) {
           document.getElementById('respuesta').style.display='block';
-          $('#respuesta').html('<div class="w3-display-middle w3-content w3-center w3-round-large w3-badge w3-white"><span class="w3-padding w3-container w3-text-green"><i class="fa fa-check-circle w3-xxxlarge"></i><br>Datos ingresados<br>satisfactoriamente!</span></div>');
-          setTimeout(function(){ $("#respuesta").fadeOut(1500); }, 2000);
+          $('#respuesta').html('<div class="w3-display-middle w3-content w3-center w3-round-large w3-badge w3-white"><span class="w3-padding w3-container w3-text-green"><i class="fa fa-check-circle w3-xxxlarge"></i><br>Datos ingresados<br>satisfactoriamente!'+ <?php echo $data; ?>+'</span></div>');
+          setTimeout(function(){ $("#respuesta").fadeOut(2500); }, 3000);
           $('form#formsubida').trigger("reset");
           location.reload();
         }
@@ -300,6 +300,7 @@ $(document).ready(function(){
 </script>
 </body>
 </html>
+
 
 
 
