@@ -51,7 +51,6 @@ try {
 
     // ... (El resto del código PHP permanece igual)
 
-$fecha_actual = date('Y-m-d H:i:s'); 
 
     // 6. CONSULTA SQL CON MARCADORES DE POSICIÓN (?)
     $sql = "INSERT INTO Solicitudes (
@@ -62,7 +61,7 @@ $fecha_actual = date('Y-m-d H:i:s');
                 cuerpo_de_emergencia_que_colabora, caso_de_exito,fecha_registro
             )
             VALUES (
-                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
             )";
 
     // 7. ARREGLO DE PARÁMETROS (DEBEN IR EN EL MISMO ORDEN QUE LA CONSULTA)
@@ -83,8 +82,7 @@ $fecha_actual = date('Y-m-d H:i:s');
         $es_una_emergencia_real,
         $hubo_colaboracion_de_las_fuerzas_armadas,
         $cuerpo_de_emergencia_que_colabora,
-        $caso_de_exito,
-        $fecha_actual
+        $caso_de_exito
     ];
 
     // 8. PREPARAR Y EJECUTAR LA CONSULTA
