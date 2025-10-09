@@ -3,7 +3,6 @@
 // 1. CONFIGURACIÓN DEL SERVIDOR AZURE SQL
 $serverName = "lineavida103.database.windows.net,1433"; 
 $databaseName = "LineaVida103";
-$fecha_actual = date('Y-m-d H:i:s'); 
 // 2. CREDENCIALES DE AZURE ACTIVE DIRECTORY (AAD)
 // ¡ADVERTENCIA! Nunca guarde credenciales sensibles directamente en el código de producción. Use variables de entorno.
 $azureUsername = "juan.castiblanco@unp.gov.co"; // Debe ser su usuario AAD
@@ -52,6 +51,7 @@ try {
 
     // ... (El resto del código PHP permanece igual)
 
+$fecha_actual = date('Y-m-d H:i:s'); 
 
     // 6. CONSULTA SQL CON MARCADORES DE POSICIÓN (?)
     $sql = "INSERT INTO Solicitudes (
