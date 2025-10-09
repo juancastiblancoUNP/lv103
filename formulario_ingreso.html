@@ -40,7 +40,11 @@
         <div class="w3-row-padding">
             <div class="w3-half w3-section">
                 <label class="w3-text-indigo"><b>Tipo de Llamada *</b></label>
-                <input class="w3-input w3-border" name="tipo_de_llamada" type="text" placeholder="Ej: Emergencia, Prueba" required>
+                <select class="w3-select w3-border" name="tipo_de_llamada" required>
+                  <option value="LLAMADA ENTRANTE">LLAMADA ENTRANTE</option>
+                  <option value="DEVOLUCION DE LLAMADA ABANDONADA">LLAMADA EN SEGUIMIENTO</option>
+                  <option value="LLAMADA EN SEGUIMIENTO">LLAMADA EN SEGUIMIENTO</option>
+                </select>
             </div>
             <div class="w3-half w3-section">
                 <label class="w3-text-indigo"><b>ID Consecutivo Padre (Numérico)</b></label>
@@ -55,7 +59,31 @@
             </div>
             <div class="w3-half w3-section">
                 <label class="w3-text-indigo"><b>Grupo al que Pertenece</b></label>
-                <input class="w3-input w3-border" name="grupo_al_que_pertenece" type="text" placeholder="Ej: Policía, Bomberos">
+
+              <select class="w3-select w3-border" name="grupo_al_que_pertenece">
+                  <option value="" disabled selected>Seleccione el grupo...</option>
+                  <option value="No pertenece a ningun grupo">No pertenece a ningún grupo</option>
+                  <option value="Contratista publico">Contratista público</option>
+                  <option value="Dirigentes o activistas de grupos politicos">1. Dirigentes o activistas de grupos políticos y especialmente de grupos de oposición.</option>
+                  <option value="Dirigentes, representantes o activistas de organizaciones defensoras de derechos humanos">2. Dirigentes, representantes o activistas de organizaciones defensoras de derechos humanos, de víctimas, sociales, cívicas, comunales o campesinas.</option>
+                  <option value="Dirigentes o activistas sindicales">3. Dirigentes o activistas sindicales.</option>
+                  <option value="Dirigentes, representantes o activistas de organizaciones gremiales">4. Dirigentes, representantes o activistas de organizaciones gremiales.</option>
+                  <option value="Dirigentes, representantes o miembros de grupos etnicos">5. Dirigentes, representantes o miembros de grupos étnicos.</option>
+                  <option value="Miembros de mision medica">6. Miembros de misión médica.</option>
+                  <option value="Testigos de Casos de Violaciones de DDHH y DIH">7. Testigos de Casos de Violaciones de DDHH y DIH.</option>
+                  <option value="Periodistas y comunicadores sociales">8. Periodistas y comunicadores sociales.</option>
+                  <option value="Victimas de violaciones a los DDHH e infracciones al DIH">9. Víctimas de violaciones a los DDHH e infracciones al DIH, incluyendo dirigentes, líderes, representantes de Organizaciones de población desplazada o de reclamantes de tierras en situación de riesgo extraordinario o extremo.</option>
+                  <option value="Servidores Publicos que tengan o hayan tenido bajo su responsabilidad">10. Servidores Públicos que tengan o hayan tenido bajo su responsabilidad el diseño, coordinación o ejecución de la política de Derechos Humanos y paz del Gobierno Nacional.</option>
+                  <option value="Ex Servidores Publicos que hayan tenido bajo su responsabilidad">11. Ex Servidores Públicos que hayan tenido bajo su responsabilidad el diseño, coordinación o ejecución de la política de DH o de paz del Gobierno Nacional.</option>
+                  <option value="Dirigentes del movimiento 19 de abril ">12. Dirigentes del movimiento 19 de abril "M-19", La Corriente de Renovación socialista "CRS", el Ejército Popular de Liberación "EPL", el partido revolucionario de los trabajadores "PRT", el Movimiento Revolucionario Quintín Lame.</option>
+                  <option value="Apoderados o Profesionales forenses">13. Apoderados o Profesionales forenses que participen en procesos judiciales o disciplinarios por violaciones de DH o infracciones al DIH.</option>
+                  <option value="Docentes de acuerdo a la definicion estipulada">14. Docentes de acuerdo a la definición estipulada en la Resolución 1240 de 2010, sin perjuicio de las responsabilidades de protección del Ministerio de educación estipuladas en la misma.</option>
+                  <option value="Servidores Publicos, con excepcion de aquellos mencionados en el numeral 10">15. Servidores Públicos. Con excepción de aquellos mencionados en el numeral 10 y los funcionarios de la PGN y la PGN quienes tienen su propio marco normativo para su protección.</option>
+                  <option value="Desmovilizados en proceso de Reintegracion">16. Desmovilizados en proceso de Reintegración a cargo de la Agencia Colombiana para la Reintegración.</option>
+                  <option value="La Unidad Nacional de Proteccion">17. La Unidad Nacional de Protección, a través del Director General, podrá vincular al Programa de Protección que esta lidera, de forma excepcional, a otras personas, en casos de extrema gravedad y urgencia, y con el fin de evitar un daño irreparable.</option>
+                  <option value="Nucleo Familiar">18. Núcleo Familiar: Hace referencia al cónyuge o compañero (a) permanente, a los hijos y a los padres del solicitante o protegido, quienes de manera excepcional, podrán ser beneficiarios de medidas si ostentan un nivel de riesgo igual o superior.</option>
+                  <option value="Programa Especial de Proteccion Integral">19. Programa Especial de Protección Integral para dirigentes, miembros y sobrevivientes de la Unión Patriótica y del Partido Comunista Colombiano.</option>
+              </select>
             </div>
         </div>
 
@@ -68,8 +96,21 @@
 
         <div class="w3-row-padding">
             <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Ciudad</b></label>
-                <input class="w3-input w3-border" name="ciudad" type="text" placeholder="Ej: Medellín">
+              <div class="w3-row-padding">
+                <div class="w3-half w3-section">
+                    <label class="w3-text-indigo"><b>Departamento *</b></label>
+                    <select class="w3-select w3-border" id="selectDepartamento" required>
+                        <option value="" disabled selected>Seleccione un Departamento</option>
+                        </select>
+                </div>
+
+                <div class="w3-half w3-section">
+                    <label class="w3-text-indigo"><b>Ciudad o Municipio *</b></label>
+                    <select class="w3-select w3-border" id="selectMunicipio" name="ciudad" required disabled>
+                        <option value="" disabled selected>Primero seleccione un departamento</option>
+                    </select>
+                </div>
+            </div>
             </div>
             <div class="w3-half w3-section">
                 <label class="w3-text-indigo"><b>Tipo de Comunidad</b></label>
@@ -147,8 +188,90 @@
 
     </form>
 </div>
+<script>
+    // LISTADO COMPLETO DE DEPARTAMENTOS Y MUNICIPIOS DE COLOMBIA (Estructura simplificada)
+    const datosColombia = {
+        "AMAZONAS": ["Leticia", "El Encanto", "La Chorrera", "La Pedrera", "Puerto Nariño", "Puerto Santander", "Tarapacá"],
+        "ANTIOQUIA": ["Medellín", "Abejorral", "Abriaquí", "Alejandría", "Amagá", "Amalfi", "Andes", "Apartadó", "Arboletes", "Argelia", "Armenia", "Bello", "Envigado", "Itagüí", "Rionegro", "Turbo"],
+        "ARAUCA": ["Arauca", "Arauquita", "Cravo Norte", "Fortul", "Puerto Rondón", "Saravena", "Tame"],
+        "ATLÁNTICO": ["Barranquilla", "Baranoa", "Galapa", "Malambo", "Palmar de Varela", "Puerto Colombia", "Sabanalarga", "Soledad", "Tubará", "Usiacurí"],
+        "BOLÍVAR": ["Cartagena de Indias", "Magangué", "Mompós", "Arjona", "Carmen de Bolívar", "Turbaco", "San Jacinto"],
+        "BOYACÁ": ["Tunja", "Chiquinquirá", "Duitama", "Sogamoso", "Garagoa", "Paipa", "Puerto Boyacá", "Villa de Leyva"],
+        "CALDAS": ["Manizales", "Aguadas", "Chinchiná", "La Dorada", "Riosucio", "Salamina", "Supía", "Villamaría"],
+        "CAQUETÁ": ["Florencia", "Albania", "Curillo", "El Doncello", "El Paujil", "Puerto Rico", "San Vicente del Caguán"],
+        "CASANARE": ["Yopal", "Aguazul", "Maní", "Monterrey", "Paz de Ariporo", "Tauramena", "Villanueva"],
+        "CAUCA": ["Popayán", "Bolívar", "Cajibío", "Corinto", "Miranda", "Patía", "Santander de Quilichao", "Timbío"],
+        "CESAR": ["Valledupar", "Aguachica", "Astrea", "Bosconia", "Curumaní", "El Copey", "La Jagua de Ibirico"],
+        "CHOCÓ": ["Quibdó", "Acandí", "Bahía Solano", "Istmina", "Lloró", "Novita", "Riosucio", "Unguía"],
+        "CÓRDOBA": ["Montería", "Cereté", "Lorica", "Montelíbano", "Planeta Rica", "Sahagún", "Tierralta"],
+        "CUNDINAMARCA": ["Bogotá D.C.", "Fusagasugá", "Girardot", "Soacha", "Chía", "Cajicá", "Facatativá", "Zipaquirá"],
+        "GUAINÍA": ["Inírida", "Barranco Minas", "Cacahual", "Mapiripana", "San Felipe"],
+        "GUAVIARE": ["San José del Guaviare", "Calamar", "El Retorno", "Miraflores"],
+        "HUILA": ["Neiva", "Pitalito", "Garzón", "Campoalegre", "La Plata", "Rivera", "Timaná"],
+        "LA GUAJIRA": ["Riohacha", "Maicao", "Uribia", "Albania", "Fonseca", "San Juan del Cesar"],
+        "MAGDALENA": ["Santa Marta", "Ciénaga", "Aracataca", "El Banco", "Plato", "Pivijay", "Zona Bananera"],
+        "META": ["Villavicencio", "Acacías", "Granada", "Puerto Gaitán", "Restrepo", "San Martín", "Cubarral"],
+        "NARIÑO": ["Pasto", "Ipiales", "Tumaco", "Barbacoas", "La Unión", "Potosí", "Túquerres"],
+        "NORTE DE SANTANDER": ["Cúcuta", "Ocaña", "Pamplona", "Tibú", "Villa del Rosario", "El Zulia"],
+        "PUTUMAYO": ["Mocoa", "Puerto Asís", "Orito", "Sibundoy", "Villagarzón"],
+        "QUINDÍO": ["Armenia", "Calarcá", "Circasia", "Montenegro", "Quimbaya", "Salento"],
+        "RISARALDA": ["Pereira", "Dosquebradas", "La Virginia", "Santa Rosa de Cabal", "Marsella"],
+        "SAN ANDRÉS Y PROVIDENCIA": ["San Andrés", "Providencia"],
+        "SANTANDER": ["Bucaramanga", "Barrancabermeja", "Girón", "Piedecuesta", "Floridablanca", "San Gil", "Socorro"],
+        "SUCRE": ["Sincelejo", "Corozal", "Sampués", "San Onofre", "Sucre"],
+        "TOLIMA": ["Ibagué", "Espinal", "Melgar", "Líbano", "Chaparral", "Fresno"],
+        "VALLE DEL CAUCA": ["Cali", "Buenaventura", "Palmira", "Tuluá", "Cartago", "Jamundí", "Yumbo"],
+        "VAUPÉS": ["Mitú", "Carurú", "Taraira"],
+        "VICHADA": ["Puerto Carreño", "Cumaribo", "La Primavera", "Santa Rosalía"]
+        // NOTA: La lista ha sido acortada. En producción, se incluirían los más de 1100 municipios.
+    };
 
+    const selectDepartamento = document.getElementById('selectDepartamento');
+    const selectMunicipio = document.getElementById('selectMunicipio');
+
+    // 1. FUNCIÓN PARA CARGAR DEPARTAMENTOS AL INICIO
+    function cargarDepartamentos() {
+        // Recorrer las claves (nombres de los departamentos) del objeto datosColombia
+        for (const departamento in datosColombia) {
+            const option = document.createElement('option');
+            option.value = departamento; // El valor que se enviará es el nombre del departamento
+            option.textContent = departamento;
+            selectDepartamento.appendChild(option);
+        }
+    }
+
+    // 2. FUNCIÓN PARA FILTRAR MUNICIPIOS
+    function filtrarMunicipios() {
+        const departamentoSeleccionado = selectDepartamento.value;
+
+        // Limpiar municipios anteriores
+        selectMunicipio.innerHTML = '<option value="" disabled selected>Seleccione Ciudad / Municipio</option>';
+        
+        // Habilitar o deshabilitar el selector de municipios
+        if (departamentoSeleccionado) {
+            selectMunicipio.disabled = false;
+            // Obtener la lista de municipios del departamento seleccionado
+            const municipios = datosColombia[departamentoSeleccionado];
+
+            // Añadir las nuevas opciones
+            municipios.forEach(municipio => {
+                const option = document.createElement('option');
+                option.value = municipio; // El valor que se enviará es el nombre del municipio
+                option.textContent = municipio;
+                selectMunicipio.appendChild(option);
+            });
+        } else {
+            selectMunicipio.disabled = true;
+            selectMunicipio.innerHTML = '<option value="" disabled selected>Primero seleccione un departamento</option>';
+        }
+    }
+
+    // EVENTO: Ejecutar filtrarMunicipios cada vez que el departamento cambie
+    selectDepartamento.addEventListener('change', filtrarMunicipios);
+
+    // INICIO: Cargar los departamentos al cargar la página
+    cargarDepartamentos();
+</script>
 </body>
 </html>
-
 
