@@ -91,7 +91,7 @@ try {
     $stmt->execute($params);
 
     echo "<br>¡Inserción segura exitosa! Registro guardado en la base de datos.";  
-    echo " <script>window.history.go(1)</script>";
+    echo " <script>window.location("formulario_ingreso.html");</script>";
 
     // --- FIN DE LA NUEVA LÓGICA DE INSERCIÓN ---
 
