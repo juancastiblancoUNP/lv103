@@ -25,12 +25,18 @@ try {
 
     // --- COMIENZO DE LA NUEVA LÓGICA DE INSERCIÓN DEL FORMULARIO ---
 
-    // 5. RECUPERAR DATOS DEL FORMULARIO (Usando NULL si el campo no se envió)
-    // NOTA: 'id' es auto_increment y no se incluye.
+    // 5. RECUPERAR DATOS DEL FORMULARIO CON CONVERSIÓN DE TIPO
+
+    // Campos NUMÉRICOS (con decimales o enteros)
+    // Usamos floatval() para los campos numeric(9,2) y intval() para enteros, o null si están vacíos.
+    $id_llamada_carbyne = isset($_POST['id_llamada_carbyne']) && $_POST['id_llamada_carbyne'] !== '' ? floatval($_POST['id_llamada_carbyne']) : null;
+    $id_llamada_carbyne_consecutivo_padre = isset($_POST['id_llamada_carbyne_consecutivo_padre']) && $_POST['id_llamada_carbyne_consecutivo_padre'] !== '' ? floatval($_POST['id_llamada_carbyne_consecutivo_padre']) : null;
+    $telefono_llamante = isset($_POST['telefono_llamante']) && $_POST['telefono_llamante'] !== '' ? floatval($_POST['telefono_llamante']) : null;
+    $numero_documento = isset($_POST['numero_documento']) && $_POST['numero_documento'] !== '' ? floatval($_POST['numero_documento']) : null;
+
+    // Campos de TEXTO (varchar/text)
+    // Usamos el operador de fusión nula para obtener el valor o null si no se envió.
     $tipo_de_llamada = $_POST['tipo_de_llamada'] ?? null;
-    $id_llamada_carbyne = $_POST['id_llamada_carbyne'] ?? null;
-    $id_llamada_carbyne_consecutivo_padre = $_POST['id_llamada_carbyne_consecutivo_padre'] ?? null;
-    $telefono_llamante = $_POST['telefono_llamante'] ?? null;
     $grupo_al_que_pertenece = $_POST['grupo_al_que_pertenece'] ?? null;
     $els = $_POST['els'] ?? null;
     $descripcion_de_llamada = $_POST['descripcion_de_llamada'] ?? null;
@@ -39,11 +45,12 @@ try {
     $tipo_gestion = $_POST['tipo_gestion'] ?? null;
     $evento = $_POST['evento'] ?? null;
     $nombre_completo = $_POST['nombre_completo'] ?? null;
-    $numero_documento = $_POST['numero_documento'] ?? null;
     $es_una_emergencia_real = $_POST['es_una_emergencia_real'] ?? null;
     $hubo_colaboracion_de_las_fuerzas_armadas = $_POST['hubo_colaboracion_de_las_fuerzas_armadas'] ?? null;
     $cuerpo_de_emergencia_que_colabora = $_POST['cuerpo_de_emergencia_que_colabora'] ?? null;
     $caso_de_exito = $_POST['caso_de_exito'] ?? null;
+
+    // ... (El resto del código PHP permanece igual)
 
 
     // 6. CONSULTA SQL CON MARCADORES DE POSICIÓN (?)
