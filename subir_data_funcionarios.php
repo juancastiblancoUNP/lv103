@@ -3,7 +3,7 @@
 // 1. CONFIGURACIÓN DEL SERVIDOR AZURE SQL
 $serverName = "lineavida103.database.windows.net,1433"; 
 $databaseName = "LineaVida103";
-
+$fecha_actual = date('Y-m-d H:i:s'); 
 // 2. CREDENCIALES DE AZURE ACTIVE DIRECTORY (AAD)
 // ¡ADVERTENCIA! Nunca guarde credenciales sensibles directamente en el código de producción. Use variables de entorno.
 $azureUsername = "juan.castiblanco@unp.gov.co"; // Debe ser su usuario AAD
@@ -59,10 +59,10 @@ try {
                 telefono_llamante, grupo_al_que_pertenece, els, descripcion_de_llamada, 
                 ciudad, tipo_de_comunidad, tipo_gestion, evento, nombre_completo, 
                 numero_documento, es_una_emergencia_real, hubo_colaboracion_de_las_fuerzas_armadas, 
-                cuerpo_de_emergencia_que_colabora, caso_de_exito
+                cuerpo_de_emergencia_que_colabora, caso_de_exito,fecha_registro
             )
             VALUES (
-                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?
             )";
 
     // 7. ARREGLO DE PARÁMETROS (DEBEN IR EN EL MISMO ORDEN QUE LA CONSULTA)
@@ -83,7 +83,8 @@ try {
         $es_una_emergencia_real,
         $hubo_colaboracion_de_las_fuerzas_armadas,
         $cuerpo_de_emergencia_que_colabora,
-        $caso_de_exito
+        $caso_de_exito,
+        $fecha_actual
     ];
 
     // 8. PREPARAR Y EJECUTAR LA CONSULTA
