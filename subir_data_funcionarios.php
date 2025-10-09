@@ -1,4 +1,5 @@
 <?php
+
 // 1. CONFIGURACIÓN DEL SERVIDOR AZURE SQL
 $serverName = "lineavida103.database.windows.net,1433"; 
 $databaseName = "LineaVida103";
@@ -22,38 +23,73 @@ try {
     
     echo "¡Conexión exitosa a Azure SQL con AAD!";
 
-    // Aquí puede continuar con sus consultas SQL...
+    // --- COMIENZO DE LA NUEVA LÓGICA DE INSERCIÓN DEL FORMULARIO ---
 
-    // ... después de la conexión exitosa (Línea 25)
+    // 5. RECUPERAR DATOS DEL FORMULARIO (Usando NULL si el campo no se envió)
+    // NOTA: 'id' es auto_increment y no se incluye.
+    $tipo_de_llamada = $_POST['tipo_de_llamada'] ?? null;
+    $id_llamada_carbyne = $_POST['id_llamada_carbyne'] ?? null;
+    $id_llamada_carbyne_consecutivo_padre = $_POST['id_llamada_carbyne_consecutivo_padre'] ?? null;
+    $telefono_llamante = $_POST['telefono_llamante'] ?? null;
+    $grupo_al_que_pertenece = $_POST['grupo_al_que_pertenece'] ?? null;
+    $els = $_POST['els'] ?? null;
+    $descripcion_de_llamada = $_POST['descripcion_de_llamada'] ?? null;
+    $ciudad = $_POST['ciudad'] ?? null;
+    $tipo_de_comunidad = $_POST['tipo_de_comunidad'] ?? null;
+    $tipo_gestion = $_POST['tipo_gestion'] ?? null;
+    $evento = $_POST['evento'] ?? null;
+    $nombre_completo = $_POST['nombre_completo'] ?? null;
+    $numero_documento = $_POST['numero_documento'] ?? null;
+    $es_una_emergencia_real = $_POST['es_una_emergencia_real'] ?? null;
+    $hubo_colaboracion_de_las_fuerzas_armadas = $_POST['hubo_colaboracion_de_las_fuerzas_armadas'] ?? null;
+    $cuerpo_de_emergencia_que_colabora = $_POST['cuerpo_de_emergencia_que_colabora'] ?? null;
+    $caso_de_exito = $_POST['caso_de_exito'] ?? null;
 
-// Línea 26: Consulta SQL con marcadores de posición (?)
-$sql = "INSERT INTO funcionarios_linea_vida_103 
-        (numero_contrato, nombre, apellido, tipo_documento, numero_documento, regional, ciudad, cad)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)"; // <- La consulta ahora está en un string
 
-// Línea 27: Los valores se pasan por separado
-$params = [
-    '0034 de 2025', 
-    'JUAN PABLO', 
-    'CASTIBLANCO CASTELLANOS', 
-    'CEDULA DE CIUDADANIA', 
-    '80168543', 
-    'SEDE PRINCIPAL', 
-    'BOGOTA', 
-    'SEDE PRINCIPAL'
-];
+    // 6. CONSULTA SQL CON MARCADORES DE POSICIÓN (?)
+    $sql = "INSERT INTO tabla_registros_llamadas (
+                tipo_de_llamada, id_llamada_carbyne, id_llamada_carbyne_consecutivo_padre, 
+                telefono_llamante, grupo_al_que_pertenece, els, descripcion_de_llamada, 
+                ciudad, tipo_de_comunidad, tipo_gestion, evento, nombre_completo, 
+                numero_documento, es_una_emergencia_real, hubo_colaboracion_de_las_fuerzas_armadas, 
+                cuerpo_de_emergencia_que_colabora, caso_de_exito
+            )
+            VALUES (
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+            )";
 
-// Prepara y ejecuta
-$stmt = $conn->prepare($sql);
-$stmt->execute($params);
+    // 7. ARREGLO DE PARÁMETROS (DEBEN IR EN EL MISMO ORDEN QUE LA CONSULTA)
+    $params = [
+        $tipo_de_llamada,
+        $id_llamada_carbyne,
+        $id_llamada_carbyne_consecutivo_padre,
+        $telefono_llamante,
+        $grupo_al_que_pertenece,
+        $els,
+        $descripcion_de_llamada,
+        $ciudad,
+        $tipo_de_comunidad,
+        $tipo_gestion,
+        $evento,
+        $nombre_completo,
+        $numero_documento,
+        $es_una_emergencia_real,
+        $hubo_colaboracion_de_las_fuerzas_armadas,
+        $cuerpo_de_emergencia_que_colabora,
+        $caso_de_exito
+    ];
 
-echo "Inserción segura exitosa con PDO."; 
+    // 8. PREPARAR Y EJECUTAR LA CONSULTA
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($params);
 
-// ...
+    echo "<br>¡Inserción segura exitosa! Registro guardado en la base de datos.";  
+
+    // --- FIN DE LA NUEVA LÓGICA DE INSERCIÓN ---
 
 } catch (PDOException $e) {
     // Si la conexión falla, se mostrará el error.
-    die("Fallo de conexión PDO: " . $e->getMessage());
+    die("<br>Fallo de conexión PDO o de inserción: " . $e->getMessage());
 }
 
 ?>
