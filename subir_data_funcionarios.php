@@ -47,7 +47,7 @@ try {
 
 
     // 6. CONSULTA SQL CON MARCADORES DE POSICIÓN (?)
-    $sql = "INSERT INTO tabla_registros_llamadas (
+    $sql = "INSERT INTO Solicitudes (
                 tipo_de_llamada, id_llamada_carbyne, id_llamada_carbyne_consecutivo_padre, 
                 telefono_llamante, grupo_al_que_pertenece, els, descripcion_de_llamada, 
                 ciudad, tipo_de_comunidad, tipo_gestion, evento, nombre_completo, 
