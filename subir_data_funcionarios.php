@@ -90,8 +90,7 @@ try {
     $stmt = $conn->prepare($sql);
     $stmt->execute($params);
 
-    echo "<br>¡Inserción segura exitosa! Registro guardado en la base de datos.";  
-    echo " <script>window.location("formulario_ingreso.html");</script>";
+    echo "<br>¡Inserción segura exitosa! Registro guardado en la base de datos."; 
 
     // --- FIN DE LA NUEVA LÓGICA DE INSERCIÓN ---
 
