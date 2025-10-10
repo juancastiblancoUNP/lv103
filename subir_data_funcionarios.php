@@ -1,5 +1,6 @@
 <?php
-
+// Establecer la zona horaria a Bogotá, Colombia (GMT-5)
+date_default_timezone_set('America/Bogota');
 // 1. CONFIGURACIÓN DEL SERVIDOR AZURE SQL
 $serverName = "lineavida103.database.windows.net,1433"; 
 $databaseName = "LineaVida103";
@@ -20,25 +21,27 @@ try {
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION] // Asegura que se lancen excepciones en caso de error
     );
     
-    echo "¡Conexión exitosa a Azure SQL con AAD!";
 
     // --- COMIENZO DE LA NUEVA LÓGICA DE INSERCIÓN DEL FORMULARIO ---
 
     // 5. RECUPERAR DATOS DEL FORMULARIO CON CONVERSIÓN DE TIPO
+$fecha_actual = date('Y-m-d H:i:s');
 
     // Campos NUMÉRICOS (con decimales o enteros)
     // Usamos floatval() para los campos numeric(9,2) y intval() para enteros, o null si están vacíos.
-    $id_llamada_carbyne = isset($_POST['id_llamada_carbyne']) && $_POST['id_llamada_carbyne'] !== '' ? floatval($_POST['id_llamada_carbyne']) : null;
-    $id_llamada_carbyne_consecutivo_padre = isset($_POST['id_llamada_carbyne_consecutivo_padre']) && $_POST['id_llamada_carbyne_consecutivo_padre'] !== '' ? floatval($_POST['id_llamada_carbyne_consecutivo_padre']) : null;
-    $telefono_llamante = isset($_POST['telefono_llamante']) && $_POST['telefono_llamante'] !== '' ? floatval($_POST['telefono_llamante']) : null;
-    $numero_documento = isset($_POST['numero_documento']) && $_POST['numero_documento'] !== '' ? floatval($_POST['numero_documento']) : null;
+    $id_llamada_carbyne = isset($_POST['id_llamada_carbyne']) && $_POST['id_llamada_carbyne'] !== '' ? intval($_POST['id_llamada_carbyne']) : null;
+    $id_llamada_carbyne_consecutivo_padre = isset($_POST['id_llamada_carbyne_consecutivo_padre']) && $_POST['id_llamada_carbyne_consecutivo_padre'] !== '' ? intval($_POST['id_llamada_carbyne_consecutivo_padre']) : null;
+    $telefono_llamante = isset($_POST['telefono_llamante']) && $_POST['telefono_llamante'] !== '' ? intval($_POST['telefono_llamante']) : null;
+    $numero_documento = isset($_POST['numero_documento']) && $_POST['numero_documento'] !== '' ? intval($_POST['numero_documento']) : null;
 
     // Campos de TEXTO (varchar/text)
     // Usamos el operador de fusión nula para obtener el valor o null si no se envió.
     $tipo_de_llamada = $_POST['tipo_de_llamada'] ?? null;
     $grupo_al_que_pertenece = $_POST['grupo_al_que_pertenece'] ?? null;
+    $subgrupo_al_que_pertenece = $_POST['subgrupo_al_que_pertenece'] ?? null;
     $els = $_POST['els'] ?? null;
     $descripcion_de_llamada = $_POST['descripcion_de_llamada'] ?? null;
+    $departamento = $_POST['departamento'] ?? null;
     $ciudad = $_POST['ciudad'] ?? null;
     $tipo_de_comunidad = $_POST['tipo_de_comunidad'] ?? null;
     $tipo_gestion = $_POST['tipo_gestion'] ?? null;
@@ -53,27 +56,29 @@ try {
 
 
     // 6. CONSULTA SQL CON MARCADORES DE POSICIÓN (?)
-    $sql = "INSERT INTO Solicitudes (
+    $sql = "INSERT INTO Registro_de_llamadas ( fecha_registro,
                 tipo_de_llamada, id_llamada_carbyne, id_llamada_carbyne_consecutivo_padre, 
-                telefono_llamante, grupo_al_que_pertenece, els, descripcion_de_llamada, 
+                telefono_llamante, grupo_al_que_pertenece,subgrupo_al_que_pertenece, els, descripcion_de_llamada, 
                 ciudad, tipo_de_comunidad, tipo_gestion, evento, nombre_completo, 
                 numero_documento, es_una_emergencia_real, hubo_colaboracion_de_las_fuerzas_armadas, 
-                cuerpo_de_emergencia_que_colabora, caso_de_exito,fecha_registro
+                cuerpo_de_emergencia_que_colabora, caso_de_exito
             )
             VALUES (
-                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
             )";
 
     // 7. ARREGLO DE PARÁMETROS (DEBEN IR EN EL MISMO ORDEN QUE LA CONSULTA)
     $params = [
+        $fecha_actual,
         $tipo_de_llamada,
         $id_llamada_carbyne,
         $id_llamada_carbyne_consecutivo_padre,
         $telefono_llamante,
         $grupo_al_que_pertenece,
+        $subgrupo_al_que_pertenece,
         $els,
         $descripcion_de_llamada,
-        $ciudad,
+        $ciudad.", ".$departamento,
         $tipo_de_comunidad,
         $tipo_gestion,
         $evento,
@@ -89,7 +94,7 @@ try {
     $stmt = $conn->prepare($sql);
     $stmt->execute($params);
 
-    echo "<br>¡Inserción segura exitosa! Registro guardado en la base de datos."; 
+    echo "ok"; 
 
     // --- FIN DE LA NUEVA LÓGICA DE INSERCIÓN ---
 

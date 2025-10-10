@@ -5,195 +5,219 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-        /* Estilo para centrar el formulario y limitar su ancho */
-        .form-container {
-            max-width: 700px;
-            margin: auto;
-            margin-top: 20px;
-            margin-bottom: 20px; /* Espacio al final de la página */
-        }
-    </style>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+
+<script>
+  function func_color(id){
+  var idcambiocolor=document.getElementById(id);
+  idcambiocolor.classList.remove("w3-light-grey"); // Remove mystyle class from DIV
+  idcambiocolor.classList.add("w3-pale-blue");
+  }
+</script>
 </head>
 <body>
 
-<div class="w3-container form-container">
-    
-    <form class="w3-container w3-card-4 w3-light-grey w3-text-indigo w3-margin" id="formsubida">
-        <h2 class="w3-center w3-indigo w3-padding">Registro de Gestión de Llamadas</h2>
-        <p class="w3-center w3-small">Los campos marcados con un **asterisco (*)** son obligatorios.</p>
+<div w3-include-html="navbar.html"></div>
 
-        <h3 class="w3-border-bottom w3-padding-small">Datos de la Llamada</h3>
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
 
-        <div class="w3-row-padding">
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>ID Llamada Carbyne (Numérico) *</b></label>
-                <input class="w3-input w3-border" name="id_llamada_carbyne" type="number" step="0.01" min="0" placeholder="ID de la llamada" required>
-            </div>
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Teléfono Llamante (Numérico) *</b></label>
-                <input class="w3-input w3-border" name="telefono_llamante" type="number" placeholder="Ej: 3001234567" required>
-            </div>
-        </div>
+
+
+<div class="w3-container">
+            <div class="w3-padding">
+            <h2 class="w3-center w3-text-blue w3-padding"><b>Registro de Gestión de Llamadas</b></h2>
+            <p class="w3-center w3-small">Los campos marcados con un **asterisco (*)** son obligatorios.</p>
+        <form class="w3-form w3-centered" id="formsubida">
+
+            <h3 class="w3-border-bottom w3-border-blue w3-padding-small w3-text-blue">Datos de la Llamada</h3>
+
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Tipo de Llamada *</b></label>
+                    <select class="w3-select w3-border w3-light-grey" name="tipo_de_llamada" id="tipo_de_llamada" required onchange="func_color(this.id);">
+                      <option value="" disabled selected>Seleccione el tipo...</option>
+                      <option value="LLAMADA ENTRANTE">LLAMADA ENTRANTE</option>
+                      <option value="DEVOLUCION DE LLAMADA ABANDONADA">DEVOLUCION DE LLAMADA ABANDONADA</option>
+                      <option value="LLAMADA EN SEGUIMIENTO">LLAMADA EN SEGUIMIENTO</option>
+                    </select>
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>ID Llamada Carbyne (Numérico) *</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="id_llamada_carbyne" id="id_llamada_carbyne" onkeyup="func_color(this.id);document.getElementById('id_llamada_carbyne_consecutivo_padre').value=this.value;" type="number" step="0.01" min="0" placeholder="ID de la llamada" required>
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>ID Consecutivo Padre (Numérico)</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="id_llamada_carbyne_consecutivo_padre" id="id_llamada_carbyne_consecutivo_padre" onchange="func_color(this.id);" type="number" step="0.01" min="0" placeholder="Opcional">
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Teléfono Llamante (Numérico) *</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="telefono_llamante" id="telefono_llamante" onchange="func_color(this.id);" type="number" placeholder="Ej: 3001234567" required>
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>ELS (Emergency Location Service)</b></label>
+                    <div class="w3-padding-small">
+                        <div class="w3-row-padding">
+                            <div class="w3-third">
+                                <input class="w3-radio w3-border w3-text-green w3-light-grey" type="radio" name="els" value="SI" checked>SI
+                            </div>
+                            <div class="w3-third">
+                                <input class="w3-radio w3-border w3-light-grey" type="radio" name="els" value="NO">NO
+                            </div>
+                            <div class="w3-third">
+                                <input class="w3-radio w3-border w3-light-grey" type="radio" name="els" value="N/A">N/A
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Grupo al que Pertenece</b></label>
+
+                  <select class="w3-select w3-border w3-light-grey" name="grupo_al_que_pertenece" id="grupo_al_que_pertenece" onchange="func_color(this.id);actualizarDetalle();" required>
+                  <option value="">-- Seleccione una Categoría --</option>
         
-        <div class="w3-row-padding">
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Tipo de Llamada *</b></label>
-                <select class="w3-select w3-border" name="tipo_de_llamada" required>
-                  <option value="LLAMADA ENTRANTE">LLAMADA ENTRANTE</option>
-                  <option value="DEVOLUCION DE LLAMADA ABANDONADA">DEVOLUCION DE LLAMADA ABANDONADA</option>
-                  <option value="LLAMADA EN SEGUIMIENTO">LLAMADA EN SEGUIMIENTO</option>
-                </select>
+        <option value="no_pertenece_a_ningun_grupo">No pertenece a ningun grupo</option>
+        <option value="contratista_publico">Contratista publico</option>
+        
+        <option value="1_dirigentes_o_activistas_de_grupos_politicos_de_oposicion">1. Dirigentes o activistas de grupos políticos de oposición.</option>
+        <option value="2_dirigentes_representantes_o_activistas_de_organizaciones_defensoras_de_derechos_humanos_y_de_paz_de_victimas_civicas_comunales_campesinas_o_sociales">2. Dirigentes, representantes o activistas de organizaciones defensoras de derechos humanos y de paz, de víctimas, cívicas, comunales, campesinas o sociales.</option>
+        <option value="3_dirigentes_o_activistas_sindicales">3. Dirigentes o activistas sindicales.</option>
+        <option value="4_dirigentes_representantes_o_activistas_de_organizaciones_gremiales">4. Dirigentes, representantes o activistas de organizaciones gremiales.</option>
+        <option value="5_dirigentes_representantes_o_miembros_de_grupos_etnicos">5. Dirigentes, representantes o miembros de grupos étnicos.</option>
+        <option value="6_miembros_de_mision_medica">6. Miembros de misión médica.</option>
+        <option value="7_testigos_de_casos_de_violaciones_de_ddhh_y_dih">7. Testigos de Casos de violaciones de DDHH y DIH.</option>
+        <option value="8_periodistas_y_comunicadores_sociales">8. Periodistas y comunicadores sociales.</option>
+        <option value="9_victimas_de_violaciones_a_los_ddhh_e_infracciones_al_dih_incluyendo_dirigentes_lideres_y_reclamantes_de_tierras">9. Víctimas de violaciones a los DDHH e infracciones al DIH, incluyendo dirigentes, líderes y reclamantes de tierras.</option>
+        <option value="10_servidores_publicos_que_tengan_o_hayan_tenido_bajo_su_responsabilidad_la_direccion_coordinacion_o_ejecucion_de_politicas_de_ddhh_proteccion_o_justicia_transicional">10. Servidores Públicos que tengan o hayan tenido bajo su responsabilidad la dirección, coordinación o ejecución de políticas de DDHH, protección o justicia transicional.</option>
+        <option value="11_ex_servidores_publicos_que_hayan_tenido_bajo_su_responsabilidad_el_diseño_coordinacion_o_ejecucion_de_politicas_de_proteccion">11. Ex Servidores Públicos que hayan tenido bajo su responsabilidad el diseño, coordinación o ejecución de políticas de protección.</option>
+        <option value="12_dirigentes_del_movimiento_19_de_abril_m_19_la_corriente_de_renovacion_socialista_el_ejercito_popular_de_liberacion_epl_entre_otros">12. Dirigentes del movimiento 19 de abril 'M - 19', La Corriente de Renovación socialista, El Ejército Popular de Liberación 'EPL', entre otros.</option>
+        <option value="13_apoderados_o_profesionales_forenses_que_participen_en_procesos_judiciales_o_disciplinarios_por_violaciones_a_ddhh">13. Apoderados o Profesionales forenses que participen en procesos judiciales o disciplinarios por violaciones a DDHH.</option>
+        <option value="14_docentes_de_acuerdo_a_la_definicion_de_la_ley_1857_de_2017">14. Docentes de acuerdo a la definición de la Ley 1857 de 2017.</option>
+        <option value="15_servidores_publicos_con_excepcion_de_aquellos_mencionados_en_el_numeral_10">15. Servidores Públicos. Con excepción de aquellos mencionados en el numeral 10.</option>
+        <option value="16_desmovilizados_en_proceso_de_reintegracion">16. Desmovilizados en proceso de Reintegración.</option>
+        <option value="17_la_unidad_nacional_de_proteccion_unp_en_el_ejercicio_de_sus_funciones">17. La Unidad Nacional de Protección (UNP) en el ejercicio de sus funciones.</option>
+        <option value="18_nucleo_familiar_hace_referencia_al_conyuge_o_compañero_a_permanente_a_los_hijos_o_al_padre_o_madre_de_manera_excepcional_del_solicitante_o_protegido_del_programa_especial_de_proteccion">18. Núcleo Familiar: Hace referencia al cónyuge o compañero (a) permanente, a los hijos, o al padre o madre de manera excepcional del solicitante o protegido del Programa Especial de Protección.</option>
+        <option value="19_programa_especial_de_proteccion_integral_para_dirigentes_miembros_y_sobrevivientes_de_la_union_patriotica_up_y_del_partido_comunista_colombiano_pcc">19. Programa Especial de Protección Integral para dirigentes, miembros y sobrevivientes de la Unión Patriótica 'UP' y del Partido Comunista Colombiano 'PCC'.</option>
+    
+                  </select>
+                </div>
+<div class="w3-padding-16 w3-section">
+    <label class="w3-text-grey w3-small" for="subgrupo_al_que_pertenece">Subgrupo al que pertenece</label>
+    <select class="w3-select w3-border" id="subgrupo_al_que_pertenece" name="subgrupo_al_que_pertenece" disabled>
+        <option value="">-- Seleccione un Grupo Principal primero --</option>
+    </select>
+
+            <div class="w3-padding-16 w3-section">
+                <label class="w3-text-grey w3-small"><b>Descripción de la Llamada (Texto) *</b></label>
+                <textarea class="w3-input w3-border w3-light-grey" name="descripcion_de_llamada" id="descripcion_de_llamada" onchange="func_color(this.id);" style="resize:none" rows="4" required></textarea>
             </div>
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>ID Consecutivo Padre (Numérico)</b></label>
-                <input class="w3-input w3-border" name="id_llamada_carbyne_consecutivo_padre" type="number" step="0.01" min="0" placeholder="Opcional">
-            </div>
-        </div>
 
-        <div class="w3-row-padding">
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>ELS (Emergency Location Service)</b></label>
-                <input class="w3-input w3-border" name="els" type="text" placeholder="Datos de localización">
-            </div>
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Grupo al que Pertenece</b></label>
+            <h3 class="w3-border-bottom w3-text-blue w3-border-blue w3-padding-small">Clasificación y Gestión</h3>
 
-              <select class="w3-select w3-border" name="grupo_al_que_pertenece">
-                  <option value="" disabled selected>Seleccione el grupo...</option>
-                  <option value="No pertenece a ningun grupo">No pertenece a ningún grupo</option>
-                  <option value="Contratista publico">Contratista público</option>
-                  <option value="Dirigentes o activistas de grupos politicos">1. Dirigentes o activistas de grupos políticos y especialmente de grupos de oposición.</option>
-                  <option value="Dirigentes, representantes o activistas de organizaciones defensoras de derechos humanos">2. Dirigentes, representantes o activistas de organizaciones defensoras de derechos humanos, de víctimas, sociales, cívicas, comunales o campesinas.</option>
-                  <option value="Dirigentes o activistas sindicales">3. Dirigentes o activistas sindicales.</option>
-                  <option value="Dirigentes, representantes o activistas de organizaciones gremiales">4. Dirigentes, representantes o activistas de organizaciones gremiales.</option>
-                  <option value="Dirigentes, representantes o miembros de grupos etnicos">5. Dirigentes, representantes o miembros de grupos étnicos.</option>
-                  <option value="Miembros de mision medica">6. Miembros de misión médica.</option>
-                  <option value="Testigos de Casos de Violaciones de DDHH y DIH">7. Testigos de Casos de Violaciones de DDHH y DIH.</option>
-                  <option value="Periodistas y comunicadores sociales">8. Periodistas y comunicadores sociales.</option>
-                  <option value="Victimas de violaciones a los DDHH e infracciones al DIH">9. Víctimas de violaciones a los DDHH e infracciones al DIH, incluyendo dirigentes, líderes, representantes de Organizaciones de población desplazada o de reclamantes de tierras en situación de riesgo extraordinario o extremo.</option>
-                  <option value="Servidores Publicos que tengan o hayan tenido bajo su responsabilidad">10. Servidores Públicos que tengan o hayan tenido bajo su responsabilidad el diseño, coordinación o ejecución de la política de Derechos Humanos y paz del Gobierno Nacional.</option>
-                  <option value="Ex Servidores Publicos que hayan tenido bajo su responsabilidad">11. Ex Servidores Públicos que hayan tenido bajo su responsabilidad el diseño, coordinación o ejecución de la política de DH o de paz del Gobierno Nacional.</option>
-                  <option value="Dirigentes del movimiento 19 de abril ">12. Dirigentes del movimiento 19 de abril "M-19", La Corriente de Renovación socialista "CRS", el Ejército Popular de Liberación "EPL", el partido revolucionario de los trabajadores "PRT", el Movimiento Revolucionario Quintín Lame.</option>
-                  <option value="Apoderados o Profesionales forenses">13. Apoderados o Profesionales forenses que participen en procesos judiciales o disciplinarios por violaciones de DH o infracciones al DIH.</option>
-                  <option value="Docentes de acuerdo a la definicion estipulada">14. Docentes de acuerdo a la definición estipulada en la Resolución 1240 de 2010, sin perjuicio de las responsabilidades de protección del Ministerio de educación estipuladas en la misma.</option>
-                  <option value="Servidores Publicos, con excepcion de aquellos mencionados en el numeral 10">15. Servidores Públicos. Con excepción de aquellos mencionados en el numeral 10 y los funcionarios de la PGN y la PGN quienes tienen su propio marco normativo para su protección.</option>
-                  <option value="Desmovilizados en proceso de Reintegracion">16. Desmovilizados en proceso de Reintegración a cargo de la Agencia Colombiana para la Reintegración.</option>
-                  <option value="La Unidad Nacional de Proteccion">17. La Unidad Nacional de Protección, a través del Director General, podrá vincular al Programa de Protección que esta lidera, de forma excepcional, a otras personas, en casos de extrema gravedad y urgencia, y con el fin de evitar un daño irreparable.</option>
-                  <option value="Nucleo Familiar">18. Núcleo Familiar: Hace referencia al cónyuge o compañero (a) permanente, a los hijos y a los padres del solicitante o protegido, quienes de manera excepcional, podrán ser beneficiarios de medidas si ostentan un nivel de riesgo igual o superior.</option>
-                  <option value="Programa Especial de Proteccion Integral">19. Programa Especial de Protección Integral para dirigentes, miembros y sobrevivientes de la Unión Patriótica y del Partido Comunista Colombiano.</option>
-              </select>
-            </div>
-        </div>
-
-        <div class="w3-section">
-            <label class="w3-text-indigo"><b>Descripción de la Llamada (Texto) *</b></label>
-            <textarea class="w3-input w3-border" name="descripcion_de_llamada" style="resize:none" rows="4" required></textarea>
-        </div>
-
-        <h3 class="w3-border-bottom w3-padding-small">Clasificación y Gestión</h3>
-
-        <div class="w3-row-padding">
-            <div class="w3-half w3-section">
-              <div class="w3-row-padding">
-                <div class="w3-half w3-section">
-                    <label class="w3-text-indigo"><b>Departamento *</b></label>
-                    <select class="w3-select w3-border" id="selectDepartamento" required>
-                        <option value="" disabled selected>Seleccione un Departamento</option>
+            <div class="w3-row-padding">
+                    <div class="w3-half w3-section">
+                        <label class="w3-text-grey w3-small"><b>Departamento *</b></label>
+                        <select class="w3-select w3-border" id="selectDepartamento" name="departamento" onchange="func_color(this.id);" required>
+                            <option value="" disabled selected>Seleccione un Departamento</option>
+                            </select>
+                    </div>
+                    <div class="w3-half w3-section">
+                        <label class="w3-text-grey w3-small"><b>Ciudad o Municipio *</b></label>
+                        <select class="w3-select w3-border" id="selectMunicipio" name="ciudad" onchange="func_color(this.id);" required disabled>
+                            <option value="" disabled selected>Primero seleccione un departamento</option>
                         </select>
+                    </div>
+            </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Tipo de Comunidad</b></label>
+                    <div class="w3-row-padding">
+                        <div class="w3-half">
+                            <input type="radio" class="w3-radio w3-border w3-light-grey" name="tipo_de_comunidad" value="ATENCION AL CIUDADANO" checked> ATENCION AL CIUDADANO
+                        </div>
+                        <div class="w3-half">
+                            <input type="radio" class="w3-radio w3-border w3-light-grey" name="tipo_de_comunidad" id="tipo_de_comunidad" value="COMUNIDAD UNP"> COMUNIDAD UNP
+                        </div>
+                    </div>
                 </div>
 
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Tipo de Gestión</b></label>
+                            <select class="w3-select w3-border w3-light-grey" name="tipo_gestion" id="tipo_gestion" onchange="actualizarEventos()" required>
+                                <option value="" disabled selected>--Elija un tipo de gestion--</option>
+                                <option value="SOLICITUD DE INFORMACION">SOLICITUD DE INFORMACION</option>
+                                <option value="EMERGENCIA">EMERGENCIA</option>
+                            </select>
+                    
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Evento</b></label>
+                    <select class="w3-select w3-border w3-light-grey" name="evento" id="evento" onchange="func_color(this.id);" disabled>
+                        <option value="" disabled selected>Seleccione un Tipo de Gestión primero</option>
+                    </select>
+                </div>
+
+            <h3 class="w3-border-bottom w3-padding-small w3-text-blue w3-border-blue">Datos del Llamante</h3>
+
+            <div class="w3-row-padding">
                 <div class="w3-half w3-section">
-                    <label class="w3-text-indigo"><b>Ciudad o Municipio *</b></label>
-                    <select class="w3-select w3-border" id="selectMunicipio" name="ciudad" required disabled>
-                        <option value="" disabled selected>Primero seleccione un departamento</option>
+                    <label class="w3-text-grey w3-small"><b>Nombre Completo</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="nombre_completo" id="nombre_completo" onchange="func_color(this.id);" type="text" placeholder="Nombre completo del llamante" autocomplete="off">
+                </div>
+                <div class="w3-half w3-section">
+                    <label class="w3-text-grey w3-small"><b>Número de Documento (Numérico)</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="numero_documento" id="numero_documento" onchange="func_color(this.id);" type="number" placeholder="No. de documento del llamante" autocomplete="off">
+                </div>
+            </div>
+            
+            <h3 class="w3-border-bottom w3-padding-small w3-text-blue w3-border-blue">Evaluación Final</h3>
+
+            <div class="w3-section">
+                <label class="w3-text-grey w3-small"><b>¿Es una Emergencia Real? *</b></label><br>
+                <input class="w3-radio" type="radio" name="es_una_emergencia_real" value="Si" required>
+                <label>Sí</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="es_una_emergencia_real" value="No">
+                <label>No</label>
+            </div>
+
+            <div class="w3-section">
+                <label class="w3-text-grey w3-small"><b>¿Hubo Colaboración de las Fuerzas Armadas?</b></label><br>
+                <input class="w3-radio" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="Si">
+                <label>Sí</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="No">
+                <label>No</label>
+            </div>
+
+            <div class="w3-row-padding">
+                <div class="w3-half w3-section">
+                    <label class="w3-text-grey w3-small"><b>Cuerpo de Emergencia que Colabora</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="cuerpo_de_emergencia_que_colabora" id="cuerpo_de_emergencia_que_colabora" onchange="func_color(this.id);" type="text" placeholder="Ej: Ambulancia 1, Rescate">
+                </div>
+                <div class="w3-half w3-section">
+                    <label class="w3-text-grey w3-small"><b>Caso de Éxito</b></label>
+                    <select class="w3-select w3-border w3-light-grey" name="caso_de_exito" id="caso_de_exito" onchange="func_color(this.id);">
+                        <option value="" disabled selected>Seleccione</option>
+                        <option value="Si">Sí</option>
+                        <option value="No">No</option>
+                        <option value="Pendiente">Pendiente de evaluación</option>
                     </select>
                 </div>
             </div>
-            </div>
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Tipo de Comunidad</b></label>
-                <select class="w3-select w3-border" name="tipo_de_comunidad">
-                    <option value="" disabled selected>Seleccione</option>
-                    <option value="urbana">Urbana</option>
-                    <option value="rural">Rural</option>
-                    <option value="indigena">Indígena</option>
-                </select>
-            </div>
-        </div>
 
-        <div class="w3-row-padding">
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Tipo de Gestión</b></label>
-                <input class="w3-input w3-border" name="tipo_gestion" type="text" placeholder="Ej: Despacho, Transferencia">
+            <span class="w3-btn w3-block w3-light-green w3-round w3-margin-top w3-margin-bottom" id="boton_subir">
+                <i class="fa fa-save w3-margin-right"></i>
+                **Guardar Registro de Llamada**
+            </span>
+        </form>
             </div>
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Evento</b></label>
-                <input class="w3-input w3-border" name="evento" type="text" placeholder="Ej: Accidente, Incendio">
-            </div>
-        </div>
-
-        <h3 class="w3-border-bottom w3-padding-small">Datos del Llamante</h3>
-
-        <div class="w3-row-padding">
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Nombre Completo</b></label>
-                <input class="w3-input w3-border" name="nombre_completo" type="text" placeholder="Nombre completo del llamante">
-            </div>
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Número de Documento (Numérico)</b></label>
-                <input class="w3-input w3-border" name="numero_documento" type="number" placeholder="Cédula, Pasaporte, etc.">
-            </div>
-        </div>
-        
-        <h3 class="w3-border-bottom w3-padding-small">Evaluación Final</h3>
-
-        <div class="w3-section">
-            <label class="w3-text-indigo"><b>¿Es una Emergencia Real? *</b></label><br>
-            <input class="w3-radio" type="radio" name="es_una_emergencia_real" value="Si" required>
-            <label>Sí</label>
-            <input class="w3-radio w3-margin-left" type="radio" name="es_una_emergencia_real" value="No">
-            <label>No</label>
-        </div>
-
-        <div class="w3-section">
-            <label class="w3-text-indigo"><b>¿Hubo Colaboración de las Fuerzas Armadas?</b></label><br>
-            <input class="w3-radio" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="Si">
-            <label>Sí</label>
-            <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="No">
-            <label>No</label>
-        </div>
-
-        <div class="w3-row-padding">
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Cuerpo de Emergencia que Colabora</b></label>
-                <input class="w3-input w3-border" name="cuerpo_de_emergencia_que_colabora" type="text" placeholder="Ej: Ambulancia 1, Rescate">
-            </div>
-            <div class="w3-half w3-section">
-                <label class="w3-text-indigo"><b>Caso de Éxito</b></label>
-                <select class="w3-select w3-border" name="caso_de_exito">
-                    <option value="" disabled selected>Seleccione</option>
-                    <option value="Si">Sí</option>
-                    <option value="No">No</option>
-                    <option value="Pendiente">Pendiente de evaluación</option>
-                </select>
-            </div>
-        </div>
-
-        <span class="w3-btn w3-block w3-indigo w3-round w3-margin-top w3-margin-bottom" id="boton_subir">
-            <i class="fa fa-save w3-margin-right"></i>
-            **Guardar Registro de Llamada**
-        </span>
-
-    </form>
         <div id="respuesta" class="w3-modal">
             <div class="w3-modal-content">
             </div>
-          </div>
-</div>
+        </div>
+      </div>
+  </div>
 <script>
     // LISTADO COMPLETO DE DEPARTAMENTOS Y MUNICIPIOS DE COLOMBIA (Estructura simplificada)
     const datosColombia = {
@@ -287,20 +311,256 @@ $(document).ready(function(){
         url: 'subir_data_funcionarios.php',
         type: 'post',
         data: $('form#formsubida').serialize(),
-        success: function(data) {
-          document.getElementById('respuesta').style.display='block';
-          $('#respuesta').html('<div class="w3-display-middle w3-content w3-center w3-round-large w3-badge w3-white"><span class="w3-padding w3-container w3-text-green"><i class="fa fa-check-circle w3-xxxlarge"></i><br>Datos ingresados<br>satisfactoriamente!'+ data+'</span></div>');
-          setTimeout(function(){ $("#respuesta").fadeOut(2500); }, 3000);
-          $('form#formsubida').trigger("reset");
-          location.reload();
+        success: function(data) { 
+            if(data=="ok"){
+                              document.getElementById('respuesta').style.display='block';
+                  $('#respuesta').html("<div class='w3-center w3-text-grey'><i class='fa fa-check w3-text-green w3-xxxlarge'></i><br>Clave cambiada satisfactoriamente<br>Actualizando datos...</div>");
+                setTimeout(function(){ $("#respuesta").fadeOut(500); }, 1000);
+location.reload();
+            }else{
+                              document.getElementById('respuesta').style.display='block';
+                  $('#respuesta').html("<div class='w3-center w3-text-grey'><i class='fa fa-close w3-text-red w3-xxxlarge'></i><br>No se cambio la clave<br>Por favor verifique sus datos"+data+"</div>");
+                setTimeout(function(){ $("#respuesta").fadeOut(3500); }, 4000);
+            }
         }
       });
     });
   });
 </script>
+
+<script>
+        // Función de normalización para asegurar la clave (quita tildes, puntos, comas, usa guiones bajos)
+        function normalizarCadenaValue(str) {
+            return str.toLowerCase()
+                      .normalize("NFD") // Descompone caracteres con tildes
+                      .replace(/[\u0300-\u036f]/g, "") // Elimina las tildes
+                      .replace(/[.,;:]/g, "") // Quita puntos, comas, dos puntos
+                      .replace(/\s+/g, '_') // Reemplaza espacios por guiones bajos
+                      .replace(/'/g, "") // Quita comillas simples
+                      .trim(); // Quita espacios/guiones bajos al inicio/final
+        }
+
+        // Mapeo de la relación con claves normalizadas (puntos -> guion bajo)
+        const datosRelacionados = {
+            "no_pertenece_a_ningun_grupo": ["N/A"],
+            "contratista_publico": ["1.1. Dirigente de Grupo Político."],
+            "1_dirigentes_o_activistas_de_grupos_politicos_de_oposicion": [
+                "1.1. Dirigente de Grupo Político.", "1.2. Miembro de Grupo Político."
+            ],
+            "2_dirigentes_representantes_o_activistas_de_organizaciones_defensoras_de_derechos_humanos_y_de_paz_de_victimas_civicas_comunales_campesinas_o_sociales": [
+                "2.1. Dirigente y/o representante de Organización defensora de derechos humanos y de paz.", 
+                "2.2. Dirigente y/o representante Organización de Víctimas.", 
+                "2.3. Dirigente y/o representante Organización Cívica.", 
+                "2.4. Dirigente y/o representante Organización Comunal.", 
+                "2.5. Dirigente y/o representante Organización Campesina.", 
+                "2.6. Dirigente y/o representante Organización Social."
+            ],
+            "3_dirigentes_o_activistas_sindicales": [
+                "3.1. Dirigente Sindical.", "3.2. Activista Sindical."
+            ],
+            "4_dirigentes_representantes_o_activistas_de_organizaciones_gremiales": [
+                "4.1. Dirigente y/o representante de Organización Gremial.", "4.2. Activista de Organización Gremial."
+            ],
+            "5_dirigentes_representantes_o_miembros_de_grupos_etnicos": [
+                "5.1. Dirigente y/o representante de comunidad afro.", "5.2. Miembro de comunidad afro.", 
+                "5.3. Dirigente y/o representante de comunidad Indígena.", "5.4. Miembro de comunidad Indígena.",
+                "5.5. Dirigente y/o representante de comunidad Gitana (Rom).", "5.6. Miembro de comunidad Gitana (Rom).", 
+                "5.7. Dirigente y/o representante de Comunidad Palenquera.", "5.8. Miembro de Comunidad Palenquera.", 
+                "5.9. Dirigente y/o representante de Comunidad Raizal.", "5.10. Miembro de Comunidad Raizal."
+            ],
+            "6_miembros_de_mision_medica": [
+                "6.1. Miembros de misión médica."
+            ],
+            "7_testigos_de_casos_de_violaciones_de_ddhh_y_dih": [
+                "7.1. Testigo o declarante de violaciones de DDHH y DIH."
+            ],
+            "8_periodistas_y_comunicadores_sociales": [
+                "8.1. Periodista y comunicador social."
+            ],
+            "9_victimas_de_violaciones_a_los_ddhh_e_infracciones_al_dih_incluyendo_dirigentes_lideres_y_reclamantes_de_tierras": [
+                "9.1. Víctima de violaciones a los derechos humanos e infracción al DIH (incluyendo dirigentes).", 
+                "9.2. Persona en condición de desplazamiento.", 
+                "9.3. Persona objeto de restitución de tierras.", 
+                "9.4. Dirigente, representante y líder de población desplazada.", 
+                "9.5. Dirigente, representante y líder reclamante de tierras."
+            ],
+            "10_servidores_publicos_que_tengan_o_hayan_tenido_bajo_su_responsabilidad_la_direccion_coordinacion_o_ejecucion_de_politicas_de_ddhh_proteccion_o_justicia_transicional": [
+                "10.1. Dirigente de Grupo Político.", "10.2. Miembro de Grupo Político."
+            ],
+            "11_ex_servidores_publicos_que_hayan_tenido_bajo_su_responsabilidad_el_diseño_coordinacion_o_ejecucion_de_politicas_de_proteccion": [
+                "11.1. Ex servidor público que haya sido jefe de seguridad o quien haya tenido bajo su responsabilidad la dirección, coordinación o ejecución de políticas de protección de derechos humanos.", 
+                "11.2. Ex defensor de DDHH."
+            ],
+            "12_dirigentes_del_movimiento_19_de_abril_m_19_la_corriente_de_renovacion_socialista_el_ejercito_popular_de_liberacion_epl_entre_otros": [
+                "12.1. Dirigente CRS.", "12.2. Dirigente EPL.", "12.3. Dirigente FARC.", "12.4. Dirigente MAQL.", 
+                "12.5. Dirigente del Frente Francisco Garnica de la Coordinadora Guerrillera Simón Bolívar.", 
+                "12.6. Dirigente MIR CGSB.", "12.7. Dirigente de la Unión Popular del Pueblo para el Pueblo.", 
+                "12.8. Dirigente Milicias independientes del valle de aburra.", "12.9. Dirigente Bloque Magdalena Medio del EPL."
+            ],
+            "13_apoderados_o_profesionales_forenses_que_participen_en_procesos_judiciales_o_disciplinarios_por_violaciones_a_ddhh": [
+                "13.1. Apoderado que participe en procesos judiciales o disciplinarios por violaciones a DDHH.", 
+                "13.2. Profesional forense que participe en procesos judiciales o disciplinarios por violaciones a DDHH."
+            ],
+            "14_docentes_de_acuerdo_a_la_definicion_de_la_ley_1857_de_2017": [
+                "14.1. Docentes."
+            ],
+            "15_servidores_publicos_con_excepcion_de_aquellos_mencionados_en_el_numeral_10": [
+                "15.1. Otro Servidor Público.", "15.2. Ministro.", "15.3. Juez.", "15.4. Diputado.", 
+                "15.5. Concejal.", "15.6. Personero.", "15.7. Alcalde.", 
+                "15.8. Servidor público que interviene en los procesos administrativos y judiciales de protección o justicia transicional."
+            ],
+            "16_desmovilizados_en_proceso_de_reintegracion": [
+                "16.1. Desmovilizado en proceso de reintegración.", 
+                "16.2. Integrante del M-19, en atención a Ley 4375 de 2005 (Ley de Justicia y Paz).", 
+                "16.3. Protección Especial de personas de las FARC, en atención al Acuerdo de Paz de 2016.", 
+                "16.4. Integrante del M-19, sin proceso de reintegración."
+            ],
+            "17_la_unidad_nacional_de_proteccion_unp_en_el_ejercicio_de_sus_funciones": [
+                "17.1. Servidores públicos en ejercicio de funciones de la UNP que por sus funciones han recibido amenazas de carácter grave y urgente."
+            ],
+            "18_nucleo_familiar_hace_referencia_al_conyuge_o_compañero_a_permanente_a_los_hijos_o_al_padre_o_madre_de_manera_excepcional_del_solicitante_o_protegido_del_programa_especial_de_proteccion": [
+                "18.1. Hijo (a) de manera excepcional del solicitante o protegido del Programa Especial de Protección.", 
+                "18.2. Padre o madre de manera excepcional del solicitante o protegido del Programa Especial de Protección."
+            ],
+            "19_programa_especial_de_proteccion_integral_para_dirigentes_miembros_y_sobrevivientes_de_la_union_patriotica_up_y_del_partido_comunista_colombiano_pcc": [
+                "19.1. Dirigente de la Unión Patriótica 'UP'.", "19.2. Miembro de la Unión Patriótica 'UP'.", 
+                "19.3. Sobreviviente de la Unión Patriótica 'UP'.", "19.4. Dirigente del Partido Comunista Colombiano 'PCC'.", 
+                "19.5. Miembro del Partido Comunista Colombiano 'PCC'.", "19.6. Sobreviviente del Partido Comunista Colombiano 'PCC'."
+            ]
+        };
+
+        function actualizarDetalle() {
+            const categoriaSelect = document.getElementById('grupo_al_que_pertenece');
+            const detalleSelect = document.getElementById('subgrupo_al_que_pertenece');
+            // La clave de coincidencia es la cadena normalizada del 'value'
+            const categoriaSeleccionada = categoriaSelect.value;
+
+            // 1. Limpiar opciones anteriores
+            detalleSelect.innerHTML = '<option value="">-- Seleccione un Detalle --</option>';
+
+            if (categoriaSeleccionada) {
+                // 2. Buscar detalles en el mapa usando la clave normalizada
+                const detalles = datosRelacionados[categoriaSeleccionada];
+
+                if (detalles) {
+                    detalles.forEach(detalle => {
+                        const newOption = document.createElement('option');
+                        
+                        // Normalizamos el valor de la opción secundaria también
+                        const valorNormalizado = normalizarCadenaValue(detalle);
+                        
+                        // El VALUE es la cadena normalizada; el TEXTCONTENT es el texto completo
+                        newOption.value = valorNormalizado; 
+                        newOption.textContent = detalle;
+                        
+                        detalleSelect.appendChild(newOption);
+                    });
+                    // 3. Habilitar el select
+                    detalleSelect.disabled = false;
+                } else {
+                    detalleSelect.disabled = true;
+                }
+            } else {
+                detalleSelect.disabled = true;
+            }
+        }
+    </script>
+<script>
+        // 1. Definición de los datos
+        const datosRelacionados_gestion = {
+            "SOLICITUD DE INFORMACION": [
+                "CAPACITACION LINEA VIDA 103",
+            "ENCUESTA DE SATISFACCION",
+            "GENERAL PROCESOS",
+            "LLAMADA ABANDONADA",
+            "LLAMADA ABUSIVA",
+            "LLAMADA CLARO",
+            "LLAMADA DE BROMA",
+            "LLAMADA DE PRUEBA",
+            "LLAMADA MOVISTAR",
+            "LLAMADA NO CORRESPONDIENTE A LA LINEA DE VIDA 103",
+            "LLAMADA SIN RESPUESTA",
+            "LLAMADA TIGO",
+            "LLAMADA VIRGIN",
+            "LLAMADA WOM",
+            "REPORTE DE DESPLAZAMIENTO",
+            "REPORTE EN CAD",
+            "REPORTE PUNTOS VIDA",
+            "RIÑAS"
+            ],
+            "EMERGENCIA": [
+                "ACCIDENTE",
+            "ACOSO SEXUAL",
+            "ALTERACION DEL ORDEN PUBLICO",
+            "AMENAZAS",
+            "ATAQUE DE ANIMALES",
+            "ATENTADO",
+            "CONSUMO DE ESTUPEFACIENTES",
+            "CORTO CIRCUITO O RIESGO ELECTRICO",
+            "DESASTRE NATURAL",
+            "EMERGENCIA MEDICA",
+            "EMERGENCIA SICOLOGICA",
+            "FALLA MECANICA",
+            "FAUNA Y FLORA",
+            "GRUPOS ARMADOS",
+            "HURTO",
+            "HURTO VEHICULAR",
+            "INCENDIO",
+            "INTENTO DE HURTO",
+            "MALTRATO ANIMAL",
+            "MANIFESTACIONES",
+            "MATERIALES PELIGROSOS",
+            "PERSONA DESAPARECIDA",
+            "PERSONA FALLECIDA",
+            "PUESTO DE CONTROL",
+            "SECUESTRO",
+            "SITUACIONES SOSPECHOSAS O DE PELIGRO",
+            "SOLICITUD DE RESCATE",
+            "SUICIDIO",
+            "VANDALISMO",
+            "VIOLENCIA DE GENERO",
+            "VIOLENCIA INTRAFAMILIAR"
+            ].sort()
+        };
+
+        // 2. Función que se ejecuta al cambiar la primera lista
+        function actualizarEventos() {
+            const tipoGestionSelect = document.getElementById('tipo_gestion');
+            const eventoSelect = document.getElementById('evento');
+            
+            // Obtener el valor seleccionado en la primera lista
+            const tipoSeleccionado = tipoGestionSelect.value;
+            
+            // Limpiar opciones anteriores del segundo select
+            eventoSelect.innerHTML = '<option value="" disabled selected>-- Elija un Evento --</option>';
+            
+            if (tipoSeleccionado) {
+                // Habilitar el segundo select y obtener las opciones correctas
+                eventoSelect.disabled = false;
+                const eventos = datosRelacionados_gestion[tipoSeleccionado];
+
+                // Crear y agregar las nuevas opciones
+                eventos.forEach(evento => {
+                    const newOption = document.createElement('option');
+                    newOption.value = evento;
+                    newOption.textContent = evento;
+                    eventoSelect.appendChild(newOption);
+                });
+            } else {
+                // Si no se selecciona nada, deshabilitar el segundo select
+                eventoSelect.disabled = true;
+                eventoSelect.innerHTML = '<option value="" disabled selected>Seleccione un Tipo de Gestión primero</option>';
+            }
+        }
+    </script>
+
+
+
+<script>
+w3.includeHTML();
+</script>
 </body>
 </html>
-
 
 
 
