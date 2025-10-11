@@ -24,7 +24,7 @@ try {
     // $_SESSION['refresh_token'] = $accessToken->getRefreshToken();
 
     // 4. Redirigir a la página principal (donde se recuperan los datos)
-    header('Location: /perfil.php');
+    header('Location: perfil.php');
     exit;
 
 } catch (Exception $e) {
