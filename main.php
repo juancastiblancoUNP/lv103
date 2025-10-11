@@ -45,7 +45,7 @@ while ($choice != 0) {
     }
 }
 function initializeGraph(): void {
-    // TODO
+    GraphHelper::initializeGraphForUserAuth();
 }
 
 function greetUser(): void {
