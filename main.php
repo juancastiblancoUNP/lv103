@@ -53,7 +53,12 @@ function greetUser(): void {
 }
 
 function displayAccessToken(): void {
-    // TODO
+    try {
+        $token = GraphHelper::getUserToken();
+        print('User token: '.$token.PHP_EOL.PHP_EOL);
+    } catch (Exception $e) {
+        print('Error getting access token: '.$e->getMessage().PHP_EOL.PHP_EOL);
+    }
 }
 
 function listInbox(): void {
