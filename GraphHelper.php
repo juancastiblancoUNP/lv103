@@ -30,5 +30,9 @@ public static function initializeGraphForUserAuth(): void {
     $adapter = new GraphRequestAdapter($authProvider);
     GraphHelper::$userClient = GraphServiceClient::createWithRequestAdapter($adapter);
 }
+  public static function getUserToken(): string {
+    return GraphHelper::$tokenProvider
+        ->getAuthorizationTokenAsync('https://graph.microsoft.com')->wait();
+}
 }
 ?>
