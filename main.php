@@ -44,4 +44,27 @@ while ($choice != 0) {
             print('Goodbye...'.PHP_EOL);
     }
 }
+function initializeGraph(): void {
+    // TODO
+}
+
+function greetUser(): void {
+    // TODO
+}
+
+function displayAccessToken(): void {
+    // TODO
+}
+
+function listInbox(): void {
+    // TODO
+}
+
+function sendMail(): void {
+    // TODO
+}
+
+function makeGraphCall(): void {
+    // TODO
+}
 ?>
