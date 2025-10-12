@@ -31,7 +31,7 @@ if (isset($email)) {
     }
     
     // 6. Mostrar el resultado
-    echo $nombre_completo;
+    echo "|".$nombre_completo;
 
 } else {
     // Esto podría ocurrir si la página se accede sin pasar por el flujo de autenticación de Easy Auth,
