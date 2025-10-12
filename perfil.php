@@ -6,7 +6,7 @@ $email = $_SERVER['HTTP_X_MS_CLIENT_PRINCIPAL_NAME'];
 // 2. Verificar si la variable existe y si hay un usuario autenticado
 if (isset($email)) {
     echo htmlspecialchars($email);
-    / 2. Obtener la cadena JSON codificada en Base64
+    // 2. Obtener la cadena JSON codificada en Base64
     $encoded_json = $_SERVER['HTTP_X_MS_CLIENT_PRINCIPAL'];
 
     // 3. Decodificar la cadena Base64 a una cadena JSON
