@@ -34,7 +34,7 @@
             <p class="w3-center w3-small">Los campos marcados con un **asterisco (*)** son obligatorios.</p>
         <form class="w3-form w3-centered" id="formsubida">
             <div class="w3-padding-small w3-section">
-                    <label class="w3-text-grey w3-small"><b>Tipo de Llamada *</b></label>
+                    <label class="w3-text-grey w3-small"><b>Email Articulador</b></label>
                 <input class="w3-input w3-border w3-light-grey" type="text" name="email_usuario" id="email_login">
             </div>
             <h3 class="w3-border-bottom w3-border-blue w3-padding-small w3-text-blue">Datos de la Llamada</h3>
@@ -336,7 +336,7 @@ $(document).ready(function(){
         type: 'post',
         data: "ok",
         success: function(data) { 
-             $('#email_login').html(data);
+             $('#email_login').val(data);
         }
       });
   });
@@ -575,6 +575,7 @@ w3.includeHTML();
 </script>
 </body>
 </html>
+
 
 
 
