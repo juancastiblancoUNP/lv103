@@ -1,3 +1,4 @@
+Hola mundo
 <?php
 // 1. INCLUIR AUTOLOADER
 // Esto hace que el SDK de Microsoft Graph (en la carpeta vendor) sea accesible.
