@@ -240,7 +240,18 @@
             <div class="w3-row-padding">
                 <div class="w3-half w3-section">
                     <label class="w3-text-grey w3-small"><b>Cuerpo de Emergencia que Colabora</b></label>
-                    <input class="w3-input w3-border w3-light-grey" name="cuerpo_de_emergencia_que_colabora" id="cuerpo_de_emergencia_que_colabora" onchange="func_color(this.id);" type="text" placeholder="Ej: Ambulancia 1, Rescate">
+                            <select class="w3-select w3-border w3-light-grey" name="cuerpo_de_emergencia_que_colabora" id="cuerpo_de_emergencia_que_colabora" onchange="func_color(this.id);">
+                                <option value="" disabled>--Elija un tipo de gestion--</option>
+                                <option value="N/A" selected>N/A</option>
+                                <option value="POLICIA NACIONAL">POLICIA NACIONAL</option>
+                                <option value="EJERCITO NACIONAL">EJERCITO NACIONAL</option>
+                                <option value="ARMADA NACIONAL">ARMADA NACIONAL</option>
+                                <option value="FUERZA AEREA">FUERZA AEREA</option>
+                                <option value="DEFENSA CIVIL">DEFENSA CIVIL</option>
+                                <option value="BOMBEROS">BOMBEROS</option>
+                                <option value="RED DE URGENCIAS (AMBULANCIAS)">RED DE URGENCIAS (AMBULANCIAS)</option>
+                                <option value="GUARDIA INDIGENA">GUARDIA INDIGENA</option>
+                            </select>
                 </div>
                 <div class="w3-half w3-section">
                     <label class="w3-text-grey w3-small"><b>Caso de Éxito</b></label>
@@ -252,6 +263,11 @@
                     </select>
                 </div>
             </div>
+
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Estado</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="estado" id="estado" onchange="func_color(this.id);" type="text" placeholder="estado" value="ABIERTO" autocomplete="off" readonly>
+                </div>
 
             <span class="w3-btn w3-block w3-light-green w3-round w3-margin-top w3-margin-bottom" id="boton_subir">
                 <i class="fa fa-save w3-margin-right"></i>
@@ -621,12 +637,3 @@ w3.includeHTML();
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
