@@ -40,7 +40,7 @@ $fecha_actual = date('Y-m-d H:i:s');
     $stmt = $conn->query($sql);
     
     // Iniciar la tabla HTML con clases de W3.CSS
-            echo '<div class="w3-responsive"><table class="w3-table-all w3-hoverable">';
+            echo '<div class="w3-responsive"><table class="w3-table-all w3-hoverable w3-small">';
             
             // --------------------------------------------------------------------------
             // 4. CREAR EL ENCABEZADO DE LA TABLA (THEAD)
