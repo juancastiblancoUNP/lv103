@@ -36,6 +36,8 @@ $fecha_actual = date('Y-m-d H:i:s');
 
     // Campos de TEXTO (varchar/text)
     // Usamos el operador de fusión nula para obtener el valor o null si no se envió.
+    $nombre_articulador = $_POST['nombre_usuario'] ?? null;
+    $email_articulador = $_POST['email_usuario'] ?? null;
     $tipo_de_llamada = $_POST['tipo_de_llamada'] ?? null;
     $grupo_al_que_pertenece = $_POST['grupo_al_que_pertenece'] ?? null;
     $subgrupo_al_que_pertenece = $_POST['subgrupo_al_que_pertenece'] ?? null;
@@ -56,7 +58,7 @@ $fecha_actual = date('Y-m-d H:i:s');
 
 
     // 6. CONSULTA SQL CON MARCADORES DE POSICIÓN (?)
-    $sql = "INSERT INTO Registro_de_llamadas ( fecha_registro,
+    $sql = "INSERT INTO Registro_de_llamadas ( fecha_registro,nombre_articulador,email_articulador,
                 tipo_de_llamada, id_llamada_carbyne, id_llamada_carbyne_consecutivo_padre, 
                 telefono_llamante, grupo_al_que_pertenece,subgrupo_al_que_pertenece, els, descripcion_de_llamada, 
                 ciudad, tipo_de_comunidad, tipo_gestion, evento, nombre_completo, 
@@ -64,12 +66,14 @@ $fecha_actual = date('Y-m-d H:i:s');
                 cuerpo_de_emergencia_que_colabora, caso_de_exito
             )
             VALUES (
-                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+                ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
             )";
 
     // 7. ARREGLO DE PARÁMETROS (DEBEN IR EN EL MISMO ORDEN QUE LA CONSULTA)
     $params = [
         $fecha_actual,
+        $nombre_articulador,
+        $email_articulador,
         $tipo_de_llamada,
         $id_llamada_carbyne,
         $id_llamada_carbyne_consecutivo_padre,
