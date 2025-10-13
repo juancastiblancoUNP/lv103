@@ -10,7 +10,7 @@ $azureUsername = "juan.castiblanco@unp.gov.co"; // Debe ser su usuario AAD
 $azurePassword = "Unp2025*";        // Debe ser la contraseña de su usuario AAD
 
 // 3. DEFINICIÓN DEL DSN (Incluyendo la opción clave de AAD)
-$dsn = "sqlsrv:server=$serverName; Database=$databaseName;**LoginTimeout=30;**Authentication=ActiveDirectoryPassword";
+$dsn = "sqlsrv:server=$serverName; Database=$databaseName;Authentication=ActiveDirectoryPassword";
 
 try {
     // 4. Conexión usando PDO
@@ -18,7 +18,8 @@ try {
         $dsn,
         $azureUsername, 
         $azurePassword,
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION] // Asegura que se lancen excepciones en caso de error
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION], // Asegura que se lancen excepciones en caso de error
+        PDO::ATTR_TIMEOUT => 30 // 30 segundos para intentar la conexión
     );
     
 
