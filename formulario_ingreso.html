@@ -152,6 +152,32 @@
                 </div>
 
                 <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Subdireccion/Unidad UNP</b></label>
+                            <select class="w3-select w3-border w3-light-grey" name="Subdireccion_UnidadUNP" id="subdireccion_unidadUNP">
+                                <option value="" disabled>--Elija una Subdireccion/Unidad UNP--</option>
+                                <option value="N/A" selected>N/A</option>
+                                <option value="Direccion General">Direccion General</option>
+                                <option value="Secretaria General">Secretaria General</option>
+                                <option value="Funcionario y/o Contratista">Funcionario y/o Contratista</option>
+                                <option value="Subdireccion de Proteccion">Subdireccion de Proteccion</option>
+                                <option value="Subdireccion Especializada">Subdireccion Especializada</option>
+                                <option value="Subdireccion de Evaluacion del Riesgo">Subdireccion de Evaluacion del Riesgo</option>
+                                <option value="Subdireccion de Talento Humano">Subdireccion de Talento Humano</option>
+                            </select>
+                </div>
+
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Tipo de Protección</b></label>
+                            <select class="w3-select w3-border w3-light-grey" name="tipo_de_proteccion" id="tipo_de_proteccion">
+                                <option value="" disabled>--Elija un tipo de protección--</option>
+                                <option value="INDIVIDUAL">INDIVIDUAL</option>
+                                <option value="COLECTIVA">COLECTIVA</option>
+                                <option value="FIRMANTES DE PAZ">FIRMANTES DE PAZ</option>
+                                <option value="N/A" selected>N/A</option>
+                            </select>
+                    
+                </div>
+                <div class="w3-padding-small w3-section">
                     <label class="w3-text-grey w3-small"><b>Tipo de Gestión</b></label>
                             <select class="w3-select w3-border w3-light-grey" name="tipo_gestion" id="tipo_gestion" onchange="actualizarEventos()" required>
                                 <option value="" disabled selected>--Elija un tipo de gestion--</option>
@@ -183,19 +209,32 @@
             <h3 class="w3-border-bottom w3-padding-small w3-text-blue w3-border-blue">Evaluación Final</h3>
 
             <div class="w3-section">
-                <label class="w3-text-grey w3-small"><b>¿Es una Emergencia Real? *</b></label><br>
-                <input class="w3-radio" type="radio" name="es_una_emergencia_real" value="Si" required>
+                <label class="w3-text-grey w3-small"><b>¿Es menor de edad? *</b></label><br>
+                <input class="w3-radio" type="radio" name="es_menor_de_edad" value="SI" required>
                 <label>Sí</label>
-                <input class="w3-radio w3-margin-left" type="radio" name="es_una_emergencia_real" value="No">
+                <input class="w3-radio w3-margin-left" type="radio" name="es_menor_de_edad" value="NO">
                 <label>No</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="es_menor_de_edad" value="N/A" checked>
+                <label>N/A</label>
+            </div>
+            <div class="w3-section">
+                <label class="w3-text-grey w3-small"><b>¿Es una Emergencia Real? *</b></label><br>
+                <input class="w3-radio" type="radio" name="es_una_emergencia_real" value="SI" required>
+                <label>Sí</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="es_una_emergencia_real" value="NO">
+                <label>No</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="es_una_emergencia_real" value="N/A" checked>
+                <label>N/A</label>
             </div>
 
             <div class="w3-section">
                 <label class="w3-text-grey w3-small"><b>¿Hubo Colaboración de las Fuerzas Armadas?</b></label><br>
-                <input class="w3-radio" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="Si">
+                <input class="w3-radio" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="SI">
                 <label>Sí</label>
-                <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="No">
+                <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="NO">
                 <label>No</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="N/A">
+                <label>N/A</label>
             </div>
 
             <div class="w3-row-padding">
@@ -582,7 +621,6 @@ w3.includeHTML();
 </script>
 </body>
 </html>
-
 
 
 
