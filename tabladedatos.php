@@ -35,7 +35,7 @@ $fecha_actual = date('Y-m-d H:i:s');
                 telefono_llamante, grupo_al_que_pertenece,subgrupo_al_que_pertenece, els, descripcion_de_llamada, 
                 ciudad, tipo_de_comunidad, Subdireccion_UnidadUNP,tipo_de_proteccion, tipo_gestion, evento, nombre_completo, 
                 numero_documento,es_menor_de_edad, es_una_emergencia_real, hubo_colaboracion_de_las_fuerzas_armadas, 
-                cuerpo_de_emergencia_que_colabora, caso_de_exito, estado FROM Registro_de_llamadas";
+                cuerpo_de_emergencia_que_colabora, caso_de_exito, estado FROM Registro_de_llamadas ORDER BY fecha_registro DESC";
 
     $stmt = $conn->query($sql);
     
