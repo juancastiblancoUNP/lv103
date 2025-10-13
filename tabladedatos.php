@@ -26,7 +26,12 @@ try {
 
     // 5. RECUPERAR DATOS DEL FORMULARIO CON CONVERSIÓN DE TIPO
 $fecha_actual = date('Y-m-d H:i:s');
+// 1. Obtener el nombre principal del cliente (que suele ser el email)
+$email = $_SERVER['HTTP_X_MS_CLIENT_PRINCIPAL_NAME'];
 
+// 2. Verificar si la variable existe y si hay un usuario autenticado
+if (isset($email)) {
+    echo htmlspecialchars($email);
   
 
     // 6. CONSULTA SQL CON MARCADORES DE POSICIÓN (?)
@@ -35,7 +40,7 @@ $fecha_actual = date('Y-m-d H:i:s');
                 telefono_llamante, grupo_al_que_pertenece,subgrupo_al_que_pertenece, els, descripcion_de_llamada, 
                 ciudad, tipo_de_comunidad, Subdireccion_UnidadUNP,tipo_de_proteccion, tipo_gestion, evento, nombre_completo, 
                 numero_documento,es_menor_de_edad, es_una_emergencia_real, hubo_colaboracion_de_las_fuerzas_armadas, 
-                cuerpo_de_emergencia_que_colabora, caso_de_exito, estado FROM Registro_de_llamadas ORDER BY fecha_registro DESC";
+                cuerpo_de_emergencia_que_colabora, caso_de_exito, estado FROM Registro_de_llamadas WHERE email_articulador='".$email."' ORDER BY fecha_registro DESC";
 
     $stmt = $conn->query($sql);
     
@@ -75,7 +80,7 @@ $fecha_actual = date('Y-m-d H:i:s');
  
 
     // --- FIN DE LA NUEVA LÓGICA DE INSERCIÓN ---
-
+}
 } catch (PDOException $e) {
     // 5. Handle connection or query errors
     echo "Connection failed: " . $e->getMessage();
