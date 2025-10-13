@@ -46,9 +46,12 @@ $fecha_actual = date('Y-m-d H:i:s');
     $departamento = $_POST['departamento'] ?? null;
     $ciudad = $_POST['ciudad'] ?? null;
     $tipo_de_comunidad = $_POST['tipo_de_comunidad'] ?? null;
+    $Subdireccion_UnidadUNP = $_POST['Subdireccion_UnidadUNP'] ?? null;
+    $tipo_de_proteccion = $_POST['tipo_de_proteccion'] ?? null;
     $tipo_gestion = $_POST['tipo_gestion'] ?? null;
     $evento = $_POST['evento'] ?? null;
     $nombre_completo = $_POST['nombre_completo'] ?? null;
+    $es_menor_de_edad = $_POST['es_menor_de_edad'] ?? null;
     $es_una_emergencia_real = $_POST['es_una_emergencia_real'] ?? null;
     $hubo_colaboracion_de_las_fuerzas_armadas = $_POST['hubo_colaboracion_de_las_fuerzas_armadas'] ?? null;
     $cuerpo_de_emergencia_que_colabora = $_POST['cuerpo_de_emergencia_que_colabora'] ?? null;
@@ -58,15 +61,15 @@ $fecha_actual = date('Y-m-d H:i:s');
 
 
     // 6. CONSULTA SQL CON MARCADORES DE POSICIÓN (?)
-    $sql = "INSERT INTO Registro_de_llamadas ( fecha_registro,nombre_articulador,email_articulador,
+    $sql = "INSERT INTO Registro_de_llamadas ( fecha_registro, nombre_articulador, email_articulador,
                 tipo_de_llamada, id_llamada_carbyne, id_llamada_carbyne_consecutivo_padre, 
                 telefono_llamante, grupo_al_que_pertenece,subgrupo_al_que_pertenece, els, descripcion_de_llamada, 
-                ciudad, tipo_de_comunidad, tipo_gestion, evento, nombre_completo, 
-                numero_documento, es_una_emergencia_real, hubo_colaboracion_de_las_fuerzas_armadas, 
+                ciudad, tipo_de_comunidad, Subdireccion_UnidadUNP,tipo_de_proteccion, tipo_gestion, evento, nombre_completo, 
+                numero_documento,es_menor_de_edad, es_una_emergencia_real, hubo_colaboracion_de_las_fuerzas_armadas, 
                 cuerpo_de_emergencia_que_colabora, caso_de_exito
             )
             VALUES (
-                ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+                ?,? ,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?
             )";
 
     // 7. ARREGLO DE PARÁMETROS (DEBEN IR EN EL MISMO ORDEN QUE LA CONSULTA)
@@ -84,10 +87,13 @@ $fecha_actual = date('Y-m-d H:i:s');
         $descripcion_de_llamada,
         $ciudad.", ".$departamento,
         $tipo_de_comunidad,
+        $Subdireccion_UnidadUNP,
+        $tipo_de_proteccion,
         $tipo_gestion,
         $evento,
         $nombre_completo,
         $numero_documento,
+        $es_menor_de_edad,
         $es_una_emergencia_real,
         $hubo_colaboracion_de_las_fuerzas_armadas,
         $cuerpo_de_emergencia_que_colabora,
