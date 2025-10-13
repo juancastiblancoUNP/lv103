@@ -38,13 +38,39 @@ $fecha_actual = date('Y-m-d H:i:s');
                 cuerpo_de_emergencia_que_colabora, caso_de_exito, estado FROM Registro_de_llamadas";
 
     $stmt = $conn->query($sql);
-    
-    // 4. Fetch the results
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "fecha_registro: " . $row['fecha_registro'] . ", nombre_articulador: " . $row['nombre_articulador'] . "\n";
-    }
- 
-
+    // Iniciar la tabla HTML con clases de W3.CSS
+            echo '<table class="w3-table-all w3-hoverable">';
+            
+            // --------------------------------------------------------------------------
+            // 4. CREAR EL ENCABEZADO DE LA TABLA (THEAD)
+            // --------------------------------------------------------------------------
+            echo '<thead class="w3-black">';
+            echo '<tr>';
+            
+            // Obtener y mostrar los nombres de las columnas
+            // Usamos $stmt->getColumnMeta(i) para obtener los nombres reales de la consulta
+            for ($i = 0; $i < $stmt->columnCount(); $i++) {
+                $meta = $stmt->getColumnMeta($i);
+                echo '<th>' . str_replace('_', ' ', ucwords($meta['name'])) . '</th>'; // Limpia y capitaliza el nombre
+            }
+            
+            echo '</tr>';
+            echo '</thead>';
+            echo '<tbody>';
+            
+            // --------------------------------------------------------------------------
+            // 5. LLENAR EL CUERPO DE LA TABLA (TBODY)
+            // --------------------------------------------------------------------------
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo '<tr>';
+                foreach ($row as $data) {
+                    echo '<td>' . htmlspecialchars($data) . '</td>';
+                }
+                echo '</tr>';
+            }
+            
+            echo '</tbody>';
+            echo '</table>';
     // --- FIN DE LA NUEVA LÓGICA DE INSERCIÓN ---
 
 } catch (PDOException $e) {
