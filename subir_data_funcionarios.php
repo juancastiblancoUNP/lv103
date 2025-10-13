@@ -56,6 +56,7 @@ $fecha_actual = date('Y-m-d H:i:s');
     $hubo_colaboracion_de_las_fuerzas_armadas = $_POST['hubo_colaboracion_de_las_fuerzas_armadas'] ?? null;
     $cuerpo_de_emergencia_que_colabora = $_POST['cuerpo_de_emergencia_que_colabora'] ?? null;
     $caso_de_exito = $_POST['caso_de_exito'] ?? null;
+    $estado = $_POST['estado'] ?? null;
 
     // ... (El resto del código PHP permanece igual)
 
@@ -66,10 +67,10 @@ $fecha_actual = date('Y-m-d H:i:s');
                 telefono_llamante, grupo_al_que_pertenece,subgrupo_al_que_pertenece, els, descripcion_de_llamada, 
                 ciudad, tipo_de_comunidad, Subdireccion_UnidadUNP,tipo_de_proteccion, tipo_gestion, evento, nombre_completo, 
                 numero_documento,es_menor_de_edad, es_una_emergencia_real, hubo_colaboracion_de_las_fuerzas_armadas, 
-                cuerpo_de_emergencia_que_colabora, caso_de_exito
+                cuerpo_de_emergencia_que_colabora, caso_de_exito, estado
             )
             VALUES (
-                ?,? ,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?
+                ?,? ,?, ?, ?, ?, ?, ?, ?, ?, ?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?, ?
             )";
 
     // 7. ARREGLO DE PARÁMETROS (DEBEN IR EN EL MISMO ORDEN QUE LA CONSULTA)
@@ -97,7 +98,8 @@ $fecha_actual = date('Y-m-d H:i:s');
         $es_una_emergencia_real,
         $hubo_colaboracion_de_las_fuerzas_armadas,
         $cuerpo_de_emergencia_que_colabora,
-        $caso_de_exito
+        $caso_de_exito,
+        $estado
     ];
 
     // 8. PREPARAR Y EJECUTAR LA CONSULTA
