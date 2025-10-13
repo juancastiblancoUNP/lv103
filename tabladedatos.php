@@ -38,14 +38,15 @@ $fecha_actual = date('Y-m-d H:i:s');
                 cuerpo_de_emergencia_que_colabora, caso_de_exito, estado FROM Registro_de_llamadas";
 
     $stmt = $conn->query($sql);
+    
     // Iniciar la tabla HTML con clases de W3.CSS
-            echo '<table class="w3-table-all w3-hoverable">';
+            echo '<div class="w3-responsive"><table class="w3-table-all w3-hoverable">';
             
             // --------------------------------------------------------------------------
             // 4. CREAR EL ENCABEZADO DE LA TABLA (THEAD)
             // --------------------------------------------------------------------------
             echo '<thead class="w3-black">';
-            echo '<tr>';
+            echo '<tr class="w3-black">';
             
             // Obtener y mostrar los nombres de las columnas
             // Usamos $stmt->getColumnMeta(i) para obtener los nombres reales de la consulta
@@ -70,7 +71,9 @@ $fecha_actual = date('Y-m-d H:i:s');
             }
             
             echo '</tbody>';
-            echo '</table>';
+            echo '</table></div>';
+ 
+
     // --- FIN DE LA NUEVA LÓGICA DE INSERCIÓN ---
 
 } catch (PDOException $e) {
