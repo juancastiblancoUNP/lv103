@@ -19,7 +19,7 @@ try {
         $azureUsername, 
         $azurePassword,
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION], // Asegura que se lancen excepciones en caso de error
-        PDO::ATTR_TIMEOUT => 30 // 30 segundos para intentar la conexión
+        [PDO::ATTR_TIMEOUT => 30] // 30 segundos para intentar la conexión
     );
     
 
