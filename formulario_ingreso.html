@@ -233,7 +233,7 @@
                 <label>Sí</label>
                 <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="NO">
                 <label>No</label>
-                <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="N/A">
+                <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="N/A" checked>
                 <label>N/A</label>
             </div>
 
@@ -288,6 +288,7 @@
         "ANTIOQUIA": ["Medellín", "Abejorral", "Abriaquí", "Alejandría", "Amagá", "Amalfi", "Andes", "Apartadó", "Arboletes", "Argelia", "Armenia", "Bello", "Envigado", "Itagüí", "Rionegro", "Turbo"],
         "ARAUCA": ["Arauca", "Arauquita", "Cravo Norte", "Fortul", "Puerto Rondón", "Saravena", "Tame"],
         "ATLÁNTICO": ["Barranquilla", "Baranoa", "Galapa", "Malambo", "Palmar de Varela", "Puerto Colombia", "Sabanalarga", "Soledad", "Tubará", "Usiacurí"],
+        "BOGOTA": ["Bogotá D.C."],
         "BOLÍVAR": ["Cartagena de Indias", "Magangué", "Mompós", "Arjona", "Carmen de Bolívar", "Turbaco", "San Jacinto"],
         "BOYACÁ": ["Tunja", "Chiquinquirá", "Duitama", "Sogamoso", "Garagoa", "Paipa", "Puerto Boyacá", "Villa de Leyva"],
         "CALDAS": ["Manizales", "Aguadas", "Chinchiná", "La Dorada", "Riosucio", "Salamina", "Supía", "Villamaría"],
@@ -297,7 +298,7 @@
         "CESAR": ["Valledupar", "Aguachica", "Astrea", "Bosconia", "Curumaní", "El Copey", "La Jagua de Ibirico"],
         "CHOCÓ": ["Quibdó", "Acandí", "Bahía Solano", "Istmina", "Lloró", "Novita", "Riosucio", "Unguía"],
         "CÓRDOBA": ["Montería", "Cereté", "Lorica", "Montelíbano", "Planeta Rica", "Sahagún", "Tierralta"],
-        "CUNDINAMARCA": ["Bogotá D.C.", "Fusagasugá", "Girardot", "Soacha", "Chía", "Cajicá", "Facatativá", "Zipaquirá"],
+        "CUNDINAMARCA": ["Fusagasugá", "Girardot", "Soacha", "Chía", "Cajicá", "Facatativá", "Zipaquirá"],
         "GUAINÍA": ["Inírida", "Barranco Minas", "Cacahual", "Mapiripana", "San Felipe"],
         "GUAVIARE": ["San José del Guaviare", "Calamar", "El Retorno", "Miraflores"],
         "HUILA": ["Neiva", "Pitalito", "Garzón", "Campoalegre", "La Plata", "Rivera", "Timaná"],
@@ -419,7 +420,7 @@ $(document).ready(function(){
         // Mapeo de la relación con claves normalizadas (puntos -> guion bajo)
         const datosRelacionados = {
             "no_pertenece_a_ningun_grupo": ["N/A"],
-            "contratista_publico": ["1.1. Dirigente de Grupo Político."],
+            "contratista_publico": ["Contratista Público"],
             "1_dirigentes_o_activistas_de_grupos_politicos_de_oposicion": [
                 "1.1. Dirigente de Grupo Político.", "1.2. Miembro de Grupo Político."
             ],
@@ -637,3 +638,4 @@ w3.includeHTML();
 </script>
 </body>
 </html>
+
