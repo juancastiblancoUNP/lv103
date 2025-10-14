@@ -45,13 +45,13 @@ if (isset($email)) {
     $stmt = $conn->query($sql);
     
     // Iniciar la tabla HTML con clases de W3.CSS
-            echo '<div class="w3-responsive"><table class="w3-table-all w3-hoverable w3-tiny">';
+            echo '<div class="w3-responsive"><table class="w3-table-all w3-hoverable w3-tiny" id="tabla_datos">';
             
             // --------------------------------------------------------------------------
             // 4. CREAR EL ENCABEZADO DE LA TABLA (THEAD)
             // --------------------------------------------------------------------------
             echo '<thead class="w3-black">';
-            echo '<tr class="w3-black">';
+            echo '<tr class="w3-metro-dark-blue">';
             
             // Obtener y mostrar los nombres de las columnas
             // Usamos $stmt->getColumnMeta(i) para obtener los nombres reales de la consulta
@@ -68,9 +68,9 @@ if (isset($email)) {
             // 5. LLENAR EL CUERPO DE LA TABLA (TBODY)
             // --------------------------------------------------------------------------
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo '<tr>';
+                echo '<tr class="item">';
                 foreach ($row as $data) {
-                    echo '<td>' . htmlspecialchars($data) . '</td>';
+                    echo '<td  style="word-wrap: break-word;">' . htmlspecialchars($data) . '</td>';
                 }
                 echo '</tr>';
             }
