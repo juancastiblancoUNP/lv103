@@ -1,5 +1,4 @@
 
-<script>
     // LISTADO COMPLETO DE DEPARTAMENTOS Y MUNICIPIOS DE COLOMBIA (Estructura simplificada)
     const datosColombia = {
         "N/A": ["N/A"],
@@ -998,9 +997,7 @@
 
     // INICIO: Cargar los departamentos al cargar la página
     cargarDepartamentos();
-</script>
-    
-<script>
+
 $(document).ready(function(){
   //script que envia los datos del formulario de cosechas
   $("#boton_subir").click(function(){
@@ -1037,9 +1034,7 @@ $(document).ready(function(){
         }
       });
   });
-</script>
 
-<script>
         // Función de normalización para asegurar la clave (quita tildes, puntos, comas, usa guiones bajos)
         function normalizarCadenaValue(str) {
             return str.toLowerCase()
@@ -1175,8 +1170,7 @@ $(document).ready(function(){
                 detalleSelect.disabled = true;
             }
         }
-    </script>
-<script>
+
         // 1. Definición de los datos
         const datosRelacionados_gestion = {
             "SOLICITUD DE INFORMACION": [
@@ -1263,11 +1257,7 @@ $(document).ready(function(){
                 eventoSelect.innerHTML = '<option value="" disabled selected>Seleccione un Tipo de Gestión primero</option>';
             }
         }
-    </script>
-
-
-
-<script>
+ 
     // Get the Sidebar
 var mySidebar = document.getElementById("mySidebar");
 
@@ -1291,9 +1281,6 @@ function w3_close() {
   overlayBg.style.display = "none";
 }
 
-</script>
-    
-<script>
 function funcion_subdireccion(valor){
     // Obtener la colección de elementos con la clase "ver_subdirecciones"
     var clasesubdireccion = document.getElementsByClassName("ver_subdirecciones");
@@ -1314,4 +1301,3 @@ function funcion_subdireccion(valor){
     // Si eran formularios completos, puedes usar document.getElementById("ID_DEL_FORMULARIO").reset();
 
 }
-</script>
