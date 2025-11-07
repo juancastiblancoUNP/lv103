@@ -7,7 +7,7 @@ $databaseName = "LineaVida103";
 // 2. CREDENCIALES DE AZURE ACTIVE DIRECTORY (AAD)
 // ¡ADVERTENCIA! Nunca guarde credenciales sensibles directamente en el código de producción. Use variables de entorno.
 $azureUsername = "juan.castiblanco@unp.gov.co"; // Debe ser su usuario AAD
-$azurePassword = "Unp2025*";        // Debe ser la contraseña de su usuario AAD
+$azurePassword = "Unp2025+";        // Debe ser la contraseña de su usuario AAD
 
 // 3. DEFINICIÓN DEL DSN (Incluyendo la opción clave de AAD)
 $dsn = "sqlsrv:server=$serverName; Database=$databaseName;LoginTimeout=180;Authentication=ActiveDirectoryPassword";
