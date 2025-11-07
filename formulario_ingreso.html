@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Formulario de Gestión de Llamadas</title>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-metro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+
+<script>
+  function func_color(id){
+  var idcambiocolor=document.getElementById(id);
+  idcambiocolor.classList.remove("w3-light-grey"); // Remove mystyle class from DIV
+  idcambiocolor.classList.add("w3-pale-blue");
+  }
+</script>
+</head>
+<body>
+
+<!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right">Logo</span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-metro-dark-blue w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="https://w3schools.com/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+    </div>
+    <div class="w3-col s8 w3-bar">
+      <span>Bienvenido, <strong id="nombre_login_ini"></strong></span><br>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+    </div>
+  </div>
+  <hr>
+  <div class="w3-container">
+    <h5>Dashboard</h5>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Cerrar</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-home fa-fw"></i>  Inicio</a>
+    <a href="formulario_ingreso.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-edit fa-fw"></i>  Ingresar</a>
+    <a href="historial.html" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Historial</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Capacitacion</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-close fa-fw"></i>  Salir</a>
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+
+
+<div class="w3-container">
+            <div class="w3-padding">
+            <h2 class="w3-center w3-text-blue w3-padding"><b>Registro de Gestión de Llamadas</b></h2>
+            <p class="w3-center w3-small">Los campos marcados con un **asterisco (*)** son obligatorios.</p>
+        <form class="w3-form w3-centered" id="formsubida">
+            <h3 class="w3-border-bottom w3-border-blue w3-padding-small w3-text-blue">Información Articulador</h3>
+            <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Nombre Articulador</b></label>
+                <input class="w3-input w3-border w3-light-grey" type="text" name="nombre_usuario" id="nombre_login" readonly>
+            </div>
+            <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Email Articulador</b></label>
+                <input class="w3-input w3-border w3-light-grey" type="text" name="email_usuario" id="email_login" readonly>
+            </div>
+            <h3 class="w3-border-bottom w3-border-blue w3-padding-small w3-text-blue">Datos de la Llamada</h3>
+
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Tipo de Llamada *</b></label>
+                    <select class="w3-select w3-border w3-light-grey" name="tipo_de_llamada" id="tipo_de_llamada" required onchange="func_color(this.id);">
+                      <option value="" disabled selected>Seleccione el tipo...</option>
+                      <option value="LLAMADA ENTRANTE">LLAMADA ENTRANTE</option>
+                      <option value="DEVOLUCION DE LLAMADA ABANDONADA">DEVOLUCION DE LLAMADA ABANDONADA</option>
+                      <option value="LLAMADA EN SEGUIMIENTO">LLAMADA EN SEGUIMIENTO</option>
+                    </select>
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>ID Llamada Carbyne (Numérico) *</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="id_llamada_carbyne" id="id_llamada_carbyne" onkeyup="func_color(this.id);document.getElementById('id_llamada_carbyne_consecutivo_padre').value=this.value;" type="number" step="0.01" min="0" placeholder="ID de la llamada" required>
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>ID Consecutivo Padre (Numérico)</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="id_llamada_carbyne_consecutivo_padre" id="id_llamada_carbyne_consecutivo_padre" onchange="func_color(this.id);" type="number" step="0.01" min="0" placeholder="Opcional">
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Teléfono Llamante (Numérico) *</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="telefono_llamante" id="telefono_llamante" onchange="func_color(this.id);" type="number" placeholder="Ej: 3001234567" required>
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>ELS (Emergency Location Service)</b></label>
+                    <div class="w3-padding-small">
+                        <div class="w3-row-padding">
+                            <div class="w3-third">
+                                <input class="w3-radio w3-border w3-text-green w3-light-grey" type="radio" name="els" value="SI" checked>SI
+                            </div>
+                            <div class="w3-third">
+                                <input class="w3-radio w3-border w3-light-grey" type="radio" name="els" value="NO">NO
+                            </div>
+                            <div class="w3-third">
+                                <input class="w3-radio w3-border w3-light-grey" type="radio" name="els" value="N/A">N/A
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Grupo al que Pertenece</b></label>
+
+                  <select class="w3-select w3-border w3-light-grey" name="grupo_al_que_pertenece" id="grupo_al_que_pertenece" onchange="func_color(this.id);actualizarDetalle();" required>
+                  <option value="">-- Seleccione una Categoría --</option>
+        
+        <option value="no_pertenece_a_ningun_grupo">No pertenece a ningun grupo</option>
+        <option value="contratista_publico">Contratista publico</option>
+        
+        <option value="1_dirigentes_o_activistas_de_grupos_politicos_de_oposicion">1. Dirigentes o activistas de grupos políticos de oposición.</option>
+        <option value="2_dirigentes_representantes_o_activistas_de_organizaciones_defensoras_de_derechos_humanos_y_de_paz_de_victimas_civicas_comunales_campesinas_o_sociales">2. Dirigentes, representantes o activistas de organizaciones defensoras de derechos humanos y de paz, de víctimas, cívicas, comunales, campesinas o sociales.</option>
+        <option value="3_dirigentes_o_activistas_sindicales">3. Dirigentes o activistas sindicales.</option>
+        <option value="4_dirigentes_representantes_o_activistas_de_organizaciones_gremiales">4. Dirigentes, representantes o activistas de organizaciones gremiales.</option>
+        <option value="5_dirigentes_representantes_o_miembros_de_grupos_etnicos">5. Dirigentes, representantes o miembros de grupos étnicos.</option>
+        <option value="6_miembros_de_mision_medica">6. Miembros de misión médica.</option>
+        <option value="7_testigos_de_casos_de_violaciones_de_ddhh_y_dih">7. Testigos de Casos de violaciones de DDHH y DIH.</option>
+        <option value="8_periodistas_y_comunicadores_sociales">8. Periodistas y comunicadores sociales.</option>
+        <option value="9_victimas_de_violaciones_a_los_ddhh_e_infracciones_al_dih_incluyendo_dirigentes_lideres_y_reclamantes_de_tierras">9. Víctimas de violaciones a los DDHH e infracciones al DIH, incluyendo dirigentes, líderes y reclamantes de tierras.</option>
+        <option value="10_servidores_publicos_que_tengan_o_hayan_tenido_bajo_su_responsabilidad_la_direccion_coordinacion_o_ejecucion_de_politicas_de_ddhh_proteccion_o_justicia_transicional">10. Servidores Públicos que tengan o hayan tenido bajo su responsabilidad la dirección, coordinación o ejecución de políticas de DDHH, protección o justicia transicional.</option>
+        <option value="11_ex_servidores_publicos_que_hayan_tenido_bajo_su_responsabilidad_el_diseño_coordinacion_o_ejecucion_de_politicas_de_proteccion">11. Ex Servidores Públicos que hayan tenido bajo su responsabilidad el diseño, coordinación o ejecución de políticas de protección.</option>
+        <option value="12_dirigentes_del_movimiento_19_de_abril_m_19_la_corriente_de_renovacion_socialista_el_ejercito_popular_de_liberacion_epl_entre_otros">12. Dirigentes del movimiento 19 de abril 'M - 19', La Corriente de Renovación socialista, El Ejército Popular de Liberación 'EPL', entre otros.</option>
+        <option value="13_apoderados_o_profesionales_forenses_que_participen_en_procesos_judiciales_o_disciplinarios_por_violaciones_a_ddhh">13. Apoderados o Profesionales forenses que participen en procesos judiciales o disciplinarios por violaciones a DDHH.</option>
+        <option value="14_docentes_de_acuerdo_a_la_definicion_de_la_ley_1857_de_2017">14. Docentes de acuerdo a la definición de la Ley 1857 de 2017.</option>
+        <option value="15_servidores_publicos_con_excepcion_de_aquellos_mencionados_en_el_numeral_10">15. Servidores Públicos. Con excepción de aquellos mencionados en el numeral 10.</option>
+        <option value="16_desmovilizados_en_proceso_de_reintegracion">16. Desmovilizados en proceso de Reintegración.</option>
+        <option value="17_la_unidad_nacional_de_proteccion_unp_en_el_ejercicio_de_sus_funciones">17. La Unidad Nacional de Protección (UNP) en el ejercicio de sus funciones.</option>
+        <option value="18_nucleo_familiar_hace_referencia_al_conyuge_o_compañero_a_permanente_a_los_hijos_o_al_padre_o_madre_de_manera_excepcional_del_solicitante_o_protegido_del_programa_especial_de_proteccion">18. Núcleo Familiar: Hace referencia al cónyuge o compañero (a) permanente, a los hijos, o al padre o madre de manera excepcional del solicitante o protegido del Programa Especial de Protección.</option>
+        <option value="19_programa_especial_de_proteccion_integral_para_dirigentes_miembros_y_sobrevivientes_de_la_union_patriotica_up_y_del_partido_comunista_colombiano_pcc">19. Programa Especial de Protección Integral para dirigentes, miembros y sobrevivientes de la Unión Patriótica 'UP' y del Partido Comunista Colombiano 'PCC'.</option>
+    
+                  </select>
+                </div>
+<div class="w3-padding-16 w3-section">
+    <label class="w3-text-grey w3-small" for="subgrupo_al_que_pertenece">Subgrupo al que pertenece</label>
+    <select class="w3-select w3-border" id="subgrupo_al_que_pertenece" name="subgrupo_al_que_pertenece" disabled>
+        <option value="">-- Seleccione un Grupo Principal primero --</option>
+    </select>
+
+            <div class="w3-padding-16 w3-section">
+                <label class="w3-text-grey w3-small"><b>Descripción de la Llamada (Texto) *</b></label>
+                <textarea class="w3-input w3-border w3-light-grey" name="descripcion_de_llamada" id="descripcion_de_llamada" onchange="func_color(this.id);" style="resize:none" rows="4" required></textarea>
+            </div>
+
+            <h3 class="w3-border-bottom w3-text-blue w3-border-blue w3-padding-small">Clasificación y Gestión</h3>
+
+            <div class="w3-row-padding">
+                    <div class="w3-half w3-section">
+                        <label class="w3-text-grey w3-small"><b>Departamento *</b></label>
+                        <select class="w3-select w3-border" id="selectDepartamento" name="departamento" onchange="func_color(this.id);" required>
+                            <option value="" disabled selected>Seleccione un Departamento</option>
+                            </select>
+                    </div>
+                    <div class="w3-half w3-section">
+                        <label class="w3-text-grey w3-small"><b>Ciudad o Municipio *</b></label>
+                        <select class="w3-select w3-border" id="selectMunicipio" name="ciudad" onchange="func_color(this.id);" required disabled>
+                            <option value="" disabled selected>Primero seleccione un departamento</option>
+                        </select>
+                    </div>
+            </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Tipo de Comunidad</b></label>
+                    <div class="w3-row-padding">
+                        <div class="w3-half">
+                            <input type="radio" class="w3-radio w3-border w3-light-grey" name="tipo_de_comunidad" value="ATENCION AL CIUDADANO" onclick="funcion_subdireccion(this.value)" checked> ATENCION AL CIUDADANO
+                        </div>
+                        <div class="w3-half">
+                            <input type="radio" class="w3-radio w3-border w3-light-grey" name="tipo_de_comunidad" id="tipo_de_comunidad" value="COMUNIDAD UNP" onclick="funcion_subdireccion(this.value)"> COMUNIDAD UNP
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w3-padding-small w3-section ver_subdirecciones" style="display:none;">
+                    <label class="w3-text-grey w3-small"><b>Subdireccion/Unidad UNP</b></label>
+                            <select class="w3-select w3-border w3-light-grey" name="Subdireccion_UnidadUNP" id="subdireccion_unidadUNP">
+                                <option value="" disabled>--Elija una Subdireccion/Unidad UNP--</option>
+                                <option value="N/A" selected>N/A</option>
+                                <option value="Direccion General">Direccion General</option>
+                                <option value="Secretaria General">Secretaria General</option>
+                                <option value="Funcionario y/o Contratista">Funcionario y/o Contratista</option>
+                                <option value="Subdireccion de Proteccion">Subdireccion de Proteccion</option>
+                                <option value="Subdireccion Especializada">Subdireccion Especializada</option>
+                                <option value="Subdireccion de Evaluacion del Riesgo">Subdireccion de Evaluacion del Riesgo</option>
+                                <option value="Subdireccion de Talento Humano">Subdireccion de Talento Humano</option>
+                            </select>
+                </div>
+
+                <div class="w3-padding-small w3-section ver_subdirecciones" style="display:none;">
+                    <label class="w3-text-grey w3-small"><b>Tipo de Protección</b></label>
+                            <select class="w3-select w3-border w3-light-grey" name="tipo_de_proteccion" id="tipo_de_proteccion">
+                                <option value="" disabled>--Elija un tipo de protección--</option>
+                                <option value="N/A" selected>N/A</option>
+                                <option value="INDIVIDUAL">INDIVIDUAL</option>
+                                <option value="COLECTIVA">COLECTIVA</option>
+                                <option value="FIRMANTES DE PAZ">FIRMANTES DE PAZ</option>
+                            </select>
+                    
+                </div>
+    <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Tipo de Gestión</b></label>
+                            <select class="w3-select w3-border w3-light-grey" name="tipo_gestion" id="tipo_gestion" onchange="actualizarEventos()" required>
+                                <option value="" disabled selected>--Elija un tipo de gestion--</option>
+                                <option value="SOLICITUD DE INFORMACION">SOLICITUD DE INFORMACION</option>
+                                <option value="EMERGENCIA">EMERGENCIA</option>
+                            </select>
+                    
+                </div>
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Evento</b></label>
+                    <select class="w3-select w3-border w3-light-grey" name="evento" id="evento" onchange="func_color(this.id);" disabled>
+                        <option value="" disabled selected>Seleccione un Tipo de Gestión primero</option>
+                    </select>
+                </div>
+
+            <h3 class="w3-border-bottom w3-padding-small w3-text-blue w3-border-blue">Datos del Llamante</h3>
+
+            <div class="w3-row-padding">
+                <div class="w3-half w3-section">
+                    <label class="w3-text-grey w3-small"><b>Nombre Completo</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="nombre_completo" id="nombre_completo" onchange="func_color(this.id);" type="text" placeholder="Nombre completo del llamante" autocomplete="off">
+                </div>
+                <div class="w3-half w3-section">
+                    <label class="w3-text-grey w3-small"><b>Número de Documento (Numérico)</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="numero_documento" id="numero_documento" onchange="func_color(this.id);" type="number" placeholder="No. de documento del llamante" autocomplete="off">
+                </div>
+            </div>
+            
+            <h3 class="w3-border-bottom w3-padding-small w3-text-blue w3-border-blue">Evaluación Final</h3>
+
+            <div class="w3-section">
+                <label class="w3-text-grey w3-small"><b>¿Es menor de edad? *</b></label><br>
+                <input class="w3-radio" type="radio" name="es_menor_de_edad" value="SI" required>
+                <label>Sí</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="es_menor_de_edad" value="NO">
+                <label>No</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="es_menor_de_edad" value="N/A" checked>
+                <label>N/A</label>
+            </div>
+            <div class="w3-section">
+                <label class="w3-text-grey w3-small"><b>¿Es una Emergencia Real? *</b></label><br>
+                <input class="w3-radio" type="radio" name="es_una_emergencia_real" value="SI" required>
+                <label>Sí</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="es_una_emergencia_real" value="NO">
+                <label>No</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="es_una_emergencia_real" value="N/A" checked>
+                <label>N/A</label>
+            </div>
+
+            <div class="w3-section">
+                <label class="w3-text-grey w3-small"><b>¿Hubo Colaboración de las Fuerzas Armadas?</b></label><br>
+                <input class="w3-radio" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="SI">
+                <label>Sí</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="NO">
+                <label>No</label>
+                <input class="w3-radio w3-margin-left" type="radio" name="hubo_colaboracion_de_las_fuerzas_armadas" value="N/A" checked>
+                <label>N/A</label>
+            </div>
+
+            <div class="w3-row-padding">
+                <div class="w3-half w3-section">
+                    <label class="w3-text-grey w3-small"><b>Cuerpo de Emergencia que Colabora</b></label>
+                            <select class="w3-select w3-border w3-light-grey" name="cuerpo_de_emergencia_que_colabora" id="cuerpo_de_emergencia_que_colabora" onchange="func_color(this.id);">
+                                <option value="" disabled>--Elija un tipo de gestion--</option>
+                                <option value="N/A" selected>N/A</option>
+                                <option value="POLICIA NACIONAL">POLICIA NACIONAL</option>
+                                <option value="EJERCITO NACIONAL">EJERCITO NACIONAL</option>
+                                <option value="ARMADA NACIONAL">ARMADA NACIONAL</option>
+                                <option value="FUERZA AEREA">FUERZA AEREA</option>
+                                <option value="DEFENSA CIVIL">DEFENSA CIVIL</option>
+                                <option value="BOMBEROS">BOMBEROS</option>
+                                <option value="RED DE URGENCIAS (AMBULANCIAS)">RED DE URGENCIAS (AMBULANCIAS)</option>
+                                <option value="GUARDIA INDIGENA">GUARDIA INDIGENA</option>
+                            </select>
+                </div>
+                <div class="w3-half w3-section">
+                    <label class="w3-text-grey w3-small"><b>Caso de Éxito</b></label>
+                    <select class="w3-select w3-border w3-light-grey" name="caso_de_exito" id="caso_de_exito" onchange="func_color(this.id);">
+                        <option value="" disabled selected>Seleccione</option>
+                        <option value="Si">Sí</option>
+                        <option value="No">No</option>
+                        <option value="Pendiente">Pendiente de evaluación</option>
+                    </select>
+                </div>
+            </div>
+
+                <div class="w3-padding-small w3-section">
+                    <label class="w3-text-grey w3-small"><b>Estado</b></label>
+                    <input class="w3-input w3-border w3-light-grey" name="estado" id="estado" onchange="func_color(this.id);" type="text" placeholder="estado" value="ABIERTO" autocomplete="off" readonly>
+                </div>
+
+            <span class="w3-btn w3-block w3-light-green w3-round w3-margin-top w3-margin-bottom" id="boton_subir">
+                <i class="fa fa-save w3-margin-right"></i>
+                **Guardar Registro de Llamada**
+            </span>
+        </form>
+            </div>
+        <div id="respuesta" class="w3-modal">
+            <div class="w3-modal-content">
+            </div>
+        </div>
+      </div>
+  </div>
+    <script src="js_form.js"></script>
+<script>
+w3.includeHTML();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
